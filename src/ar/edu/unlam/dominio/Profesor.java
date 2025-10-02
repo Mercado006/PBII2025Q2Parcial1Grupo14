@@ -7,4 +7,9 @@ public class Profesor {
 		
 	}
 
+	public boolean agregarCurso(Curso curso) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
