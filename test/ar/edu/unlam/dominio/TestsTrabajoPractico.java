@@ -1,23 +1,25 @@
 package ar.edu.unlam.dominio;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.Test;
 
-public class ClaseDeTest {
+public class TestsTrabajoPractico {
 	
 	@Test
-	public void dadoQueExisteUnProfesorConElMetodoAsignarTrabajoPracticoACursoDichoTrabajoPracticoEsAñadidoALaListaDeTrabajosPracticosDeTodosLosAlumnosInscriptosEnElCurso() {
-	// Testea el método de Profesor para que efectivamente asigne el T.P. a todos los alumnos inscriptos en el curso.
+	public void dadoQueExisteUnProfesorConElMetodoAsignarTrabajoPracticoACursoDichoTrabajoPracticoEsAniadidoALaListaDeTrabajosPracticosDeTodosLosAlumnosInscriptosEnElCurso() {
+	// Testea el mï¿½todo de Profesor para que efectivamente asigne el T.P. a todos los alumnos inscriptos en el curso.
 		Profesor profesor = new Profesor();
 		
 		Alumno alumnoUno = new Alumno();
 		Alumno alumnoDos = new Alumno();
 		
 		Curso curso = new Curso();
-		// Acá se tendrían que incorporar los alumnos al curso, junto al profesor
+		// Acï¿½ se tendrï¿½an que incorporar los alumnos al curso, junto al profesor
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -30,7 +32,7 @@ public class ClaseDeTest {
 	
 	@Test	
 	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoDevuelveFalseSiDichoTrabajoNoSeEncuentraEnSuListaDeTrabajosPracticos() {
-	// Testea el método de Alumno entregarTrabajoPractico para chequear que devuelva falso si no tiene dicho T.P. asignado.
+	// Testea el mï¿½todo de Alumno entregarTrabajoPractico para chequear que devuelva falso si no tiene dicho T.P. asignado.
 		Profesor profesor = new Profesor();
 		Alumno alumnoUno = new Alumno();
 		Alumno alumnoDos = new Alumno();
@@ -47,12 +49,12 @@ public class ClaseDeTest {
 	
 	@Test	
 	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoSiEsExitosoDichoTrabajoEsRemovidoDeSuListaDeTrabajosPracticos() {
-	// Testea el método de Alumno entregarTrabajoPractico para chequear que si todo sale bien se remueve dicho T.P. de su lista de trabajosPracticos.
+	// Testea el mï¿½todo de Alumno entregarTrabajoPractico para chequear que si todo sale bien se remueve dicho T.P. de su lista de trabajosPracticos.
 		Profesor profesor = new Profesor();
 		Alumno alumno = new Alumno();
 		
 		Curso curso = new Curso();
-		// Acá se tendría que incorporar el alumno y profesor al curso
+		// Acï¿½ se tendrï¿½a que incorporar el alumno y profesor al curso
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -67,12 +69,12 @@ public class ClaseDeTest {
 	
 	@Test	
 	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoSiEsExitosoSeActualizaElAtributoAlumnoDeDichoTrabajo() {
-	// Testea el método de Alumno entregarTrabajoPractico para chequear que si todo sale bien se remueve dicho T.P. de su lista de trabajosPracticos.
+	// Testea el mï¿½todo de Alumno entregarTrabajoPractico para chequear que si todo sale bien se remueve dicho T.P. de su lista de trabajosPracticos.
 		Profesor profesor = new Profesor();
 		Alumno alumno = new Alumno();
 		
 		Curso curso = new Curso();
-		// Acá se tendría que incorporar el alumno y profesor al curso
+		// Acï¿½ se tendrï¿½a que incorporar el alumno y profesor al curso
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -89,12 +91,12 @@ public class ClaseDeTest {
 	
 	@Test	
 	public void dadoQueExisteUnCursoConElMetodoRecibirTrabajoPracticoDevuelveFalseSiSeIntentaEntregarDichoTrabajoFueraDeLaFechaEstipuladaEnTrabajoPractico() {
-	// Testea el método de Curso recibirTrabajoPractico para que no se puedan entregar trabajos fuera de plazo.
+	// Testea el mï¿½todo de Curso recibirTrabajoPractico para que no se puedan entregar trabajos fuera de plazo.
 		Profesor profesor = new Profesor();
 		Alumno alumno = new Alumno();
 		
 		Curso curso = new Curso();
-		// Acá se tendría que incorporar el alumno y profesor al curso
+		// Acï¿½ se tendrï¿½a que incorporar el alumno y profesor al curso
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -107,11 +109,11 @@ public class ClaseDeTest {
 	
 	@Test	
 	public void dadoQueExisteUnProfesorConElMetodoRecibirTrabajoPracticoDichoTrabajoSeAgregaASuListaDeTrabajosPracticos() {
-	// Testea el método de Profesor recibirTrabajoPractico para verificar que efectivamente se añada el trabajo práctico a su lista.
+	// Testea el mï¿½todo de Profesor recibirTrabajoPractico para verificar que efectivamente se aï¿½ada el trabajo prï¿½ctico a su lista.
 		Profesor profesor = new Profesor();
 		
 		Curso curso = new Curso();
-		// El profesor se tendría que incorporar al curso
+		// El profesor se tendrï¿½a que incorporar al curso
 
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -123,11 +125,11 @@ public class ClaseDeTest {
 	
 	@Test	
 	public void dadoQueExisteUnProfesorConElMetodoCorregirTrabajoPracticoSeActualizaLaNotaDelTrabajoPractico() {
-	// Testea el método de Profesor corregirTrabajoPractico y verifica con un trabajoPractico.getNota() que efectivamente se haya actualizado el atributo.
+	// Testea el mï¿½todo de Profesor corregirTrabajoPractico y verifica con un trabajoPractico.getNota() que efectivamente se haya actualizado el atributo.
 		Profesor profesor = new Profesor();
 		
 		Curso curso = new Curso();
-		// El profesor se tendría que incorporar al curso
+		// El profesor se tendrï¿½a que incorporar al curso
 
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -145,11 +147,11 @@ public class ClaseDeTest {
 	
 	@Test	
 	public void dadoQueExisteUnProfesorConElMetodoCorregirTrabajoPracticoSeActualizaElEstadoCorregidoDeTrabajoPracticoATrue() {
-	// Testea el método de Profesor corregirTrabajoPractico y verifica con un trabajoPractico.getCorregido() que efectivamente se haya actualizado el estado del atributo a true.
+	// Testea el mï¿½todo de Profesor corregirTrabajoPractico y verifica con un trabajoPractico.getCorregido() que efectivamente se haya actualizado el estado del atributo a true.
 		Profesor profesor = new Profesor();
 		
 		Curso curso = new Curso();
-		// El profesor se tendría que incorporar al curso
+		// El profesor se tendrï¿½a que incorporar al curso
 
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -167,11 +169,11 @@ public class ClaseDeTest {
 	
 	@Test
 	public void dadoQueExisteUnProfesorConElMetodoObtenerTrabajosPracticosSinCorregirDevuelveUnaListaDeTrabajosPracticosCuyoAtributoCorregidoSeaFalse() {
-	// Testea el método de Profesor obtenerTrabajosPracticosSinCorregir y verifica que en la lista que se devolvió solamente existan aquellos trabajosPracticos cuyo Boolean corregido esté seteado a false.
+	// Testea el mï¿½todo de Profesor obtenerTrabajosPracticosSinCorregir y verifica que en la lista que se devolviï¿½ solamente existan aquellos trabajosPracticos cuyo Boolean corregido estï¿½ seteado a false.
 		Profesor profesor = new Profesor();
 		
 		Curso curso = new Curso();
-		// El profesor se tendría que incorporar al curso
+		// El profesor se tendrï¿½a que incorporar al curso
 
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPracticoUno = new TrabajoPractico(fechaEntrega, curso);
@@ -189,10 +191,10 @@ public class ClaseDeTest {
 		assertTrue(trabajosPracticosSinCorregirObtenidos.contains(trabajoPracticoDos));
 		assertTrue(trabajosPracticosSinCorregirObtenidos.contains(trabajoPracticoTres));
 		
-		Integer tamañoEsperado = 2;
-		Integer tamañoObtenido = trabajosPracticosSinCorregirObtenidos.size();
+		Integer tamanioEsperado = 2;
+		Integer tamanioObtenido = trabajosPracticosSinCorregirObtenidos.size();
 		
-		assertEquals(tamañoEsperado, tamañoObtenido);
+		assertEquals(tamanioEsperado, tamanioObtenido);
 	}
 
 }
