@@ -1,5 +1,5 @@
 package ar.edu.unlam.dominio;
 
-public class AlumnoCurso {
+public class InscripcionTest {
 
 }
