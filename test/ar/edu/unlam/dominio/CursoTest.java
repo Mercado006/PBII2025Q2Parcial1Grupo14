@@ -29,12 +29,15 @@ public class CursoTest {
 	
 	@Test	
 	public void dadoQueExisteUnCursoConElMetodoRecibirTrabajoPracticoDevuelveFalseSiSeIntentaEntregarDichoTrabajoFueraDeLaFechaEstipuladaEnTrabajoPractico() {
-	// Testea el m�todo de Curso recibirTrabajoPractico para que no se puedan entregar trabajos fuera de plazo.
+	// Testea el metodo de Curso recibirTrabajoPractico para que no se puedan entregar trabajos fuera de plazo.
 		Profesor profesor = new Profesor();
 		Alumno alumno = new Alumno();
 		
 		Curso curso = new Curso();
-		// Ac� se tendr�a que incorporar el alumno y profesor al curso
+		Sistema sistema = new Sistema();
+		sistema.anadirCurso(curso);
+		sistema.anadirProfesor(profesor, curso);
+		sistema.inscribirAlumno(alumno, curso);
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);

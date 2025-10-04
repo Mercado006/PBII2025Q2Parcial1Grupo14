@@ -12,13 +12,16 @@ public class AlumnoTest {
 	
 	@Test	
 	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoDevuelveFalseSiDichoTrabajoNoSeEncuentraEnSuListaDeTrabajosPracticos() {
-	// Testea el mï¿½todo de Alumno entregarTrabajoPractico para chequear que devuelva falso si no tiene dicho T.P. asignado.
+	// Testea el metodo de Alumno entregarTrabajoPractico para chequear que devuelva falso si no tiene dicho T.P. asignado.
 		Profesor profesor = new Profesor();
 		Alumno alumnoUno = new Alumno();
 		Alumno alumnoDos = new Alumno();
-		
 		Curso curso = new Curso();
-		// Se inscribe solo el alumnoDos al curso, junto al profesor
+		
+		Sistema sistema = new Sistema();
+		sistema.anadirCurso(curso);
+		sistema.anadirProfesor(profesor, curso);
+		sistema.inscribirAlumno(alumnoDos, curso);
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -29,12 +32,15 @@ public class AlumnoTest {
 	
 	@Test	
 	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoSiEsExitosoDichoTrabajoEsRemovidoDeSuListaDeTrabajosPracticos() {
-	// Testea el mï¿½todo de Alumno entregarTrabajoPractico para chequear que si todo sale bien se remueve dicho T.P. de su lista de trabajosPracticos.
+	// Testea el metodo de Alumno entregarTrabajoPractico para chequear que si todo sale bien se remueve dicho T.P. de su lista de trabajosPracticos.
 		Profesor profesor = new Profesor();
 		Alumno alumno = new Alumno();
-		
 		Curso curso = new Curso();
-		// Acï¿½ se tendrï¿½a que incorporar el alumno y profesor al curso
+		
+		Sistema sistema = new Sistema();
+		sistema.anadirCurso(curso);
+		sistema.anadirProfesor(profesor, curso);
+		sistema.inscribirAlumno(alumno, curso);
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -44,17 +50,19 @@ public class AlumnoTest {
 		LocalDate fechaQueSeEntrego = LocalDate.of(2025, 10, 10);
 		alumno.entregarTrabajoPractico(trabajoPractico);
 		
-		assertFalse(alumno.getTrabajosPracticos.contains(trabajoPractico));
+		assertFalse(alumno.getTrabajosPracticos().contains(trabajoPractico));
 	}
 	
 	@Test	
-	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoSiEsExitosoSeActualizaElAtributoAlumnoDeDichoTrabajo() {
-	// Testea el mï¿½todo de Alumno entregarTrabajoPractico para chequear que si todo sale bien se remueve dicho T.P. de su lista de trabajosPracticos.
+	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoSeGeneraUnaEntregaTrabajoPracticoYSeAgregaALaListaDeEntregasTrabajosPracticosDelProfesorDelCurso() {
 		Profesor profesor = new Profesor();
 		Alumno alumno = new Alumno();
-		
 		Curso curso = new Curso();
-		// Acï¿½ se tendrï¿½a que incorporar el alumno y profesor al curso
+		
+		Sistema sistema = new Sistema();
+		sistema.anadirCurso(curso);
+		sistema.anadirProfesor(profesor, curso);
+		sistema.inscribirAlumno(alumno, curso);
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
@@ -64,26 +72,57 @@ public class AlumnoTest {
 		LocalDate fechaQueSeEntrego = LocalDate.of(2025, 10, 10);
 		alumno.entregarTrabajoPractico(trabajoPractico);
 		
-		Alumno alumnoEsperado = alumno;
-		Alumno alumnoObtenido = trabajoPractico.getAlumno();
-		assertEquals(alumnoEsperado, alumnoObtenido);
+		Integer tamañoEsperado = 1;
+		Integer tamañoObtenido = profesor.obtenerEntregasTrabajosPracticos().size();
+		
+		assertEquals(tamañoEsperado, tamañoObtenido);
 	}
 	
 	@Test	
-	public void dadoQueExisteUnCursoConElMetodoRecibirTrabajoPracticoDevuelveFalseSiSeIntentaEntregarDichoTrabajoFueraDeLaFechaEstipuladaEnTrabajoPractico() {
-	// Testea el mï¿½todo de Curso recibirTrabajoPractico para que no se puedan entregar trabajos fuera de plazo.
+	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoSeGeneraUnaEntregaTrabajoPracticoQueSeAgregaALaListaDeEntregasTrabajosPracticosDelProfesorDelCursoYContieneAlAlumnoQueRealizoLaEntrega() {
 		Profesor profesor = new Profesor();
 		Alumno alumno = new Alumno();
-		
 		Curso curso = new Curso();
-		// Acï¿½ se tendrï¿½a que incorporar el alumno y profesor al curso
+		
+		Sistema sistema = new Sistema();
+		sistema.anadirCurso(curso);
+		sistema.anadirProfesor(profesor, curso);
+		sistema.inscribirAlumno(alumno, curso);
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
 		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
 		
 		profesor.asignarTrabajoPracticoACurso(trabajoPractico, curso);
 		
-		LocalDate fechaQueSeEntrego = LocalDate.of(2025, 10, 21);
-		assertFalse(alumno.entregarTrabajoPractico(trabajoPractico));
+		LocalDate fechaQueSeEntrego = LocalDate.of(2025, 10, 10);
+		alumno.entregarTrabajoPractico(trabajoPractico);
+		
+		List<EntregaTrabajoPractico> entregasTrabajosPracticos = new ArrayList<>(profesor.obtenerEntregasTrabajosPracticos());
+		
+		assertTrue(entregasTrabajosPracticos.get(0).getAlumno().equals(alumno));
+	}
+	
+	@Test	
+	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoSeGeneraUnaEntregaTrabajoPracticoQueSeAgregaALaListaDeEntregasTrabajosPracticosDelProfesorDelCursoYContieneLaFechaDeEntrega() {
+		Profesor profesor = new Profesor();
+		Alumno alumno = new Alumno();
+		Curso curso = new Curso();
+		
+		Sistema sistema = new Sistema();
+		sistema.anadirCurso(curso);
+		sistema.anadirProfesor(profesor, curso);
+		sistema.inscribirAlumno(alumno, curso);
+		
+		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
+		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
+		
+		profesor.asignarTrabajoPracticoACurso(trabajoPractico, curso);
+		
+		LocalDate fechaQueSeEntrego = LocalDate.of(2025, 10, 10);
+		alumno.entregarTrabajoPractico(trabajoPractico);
+		
+		List<EntregaTrabajoPractico> entregasTrabajosPracticos = new ArrayList<>(profesor.obtenerEntregasTrabajosPracticos());
+		
+		assertTrue(entregasTrabajosPracticos.get(0).getFechaDeEntrega().equals(fechaQueSeEntrego));
 	}
 }

@@ -35,5 +35,19 @@ public class SistemaTest {
 		assertTrue(sistema.añadirProfesorACurso(profesor, curso));
 	}
 	
+	@Test
+	public void dadoQueExisteUnSistemaConUnaListaDeInscripcionesElMetodoAñadirAlumnoACursoAñadeUnaInscripcionADichaLista() {
+		Curso curso = new Curso();
+		Alumno alumno = new Alumno();
+		
+		Sistema sistema = new Sistema();
+		
+		sistema.añadirAlumnoACurso(alumno, curso);
+		
+		Integer tamañoEsperado = 1;
+		Integer tamañoObtenido = sistema.getInscripciones.size();
+		
+		assertEquals(tamañoEsperado, tamañoObtenido);
+	}
 	
 }
