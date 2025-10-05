@@ -24,10 +24,33 @@ public class InscripcionTest {
 		
 		inscripcion.agregarNota(nota);
 		
-		Integer tamañoEsperado = 1;
-		Integer tamañoObtenido = inscripcion.getNotas().size();
+		Integer tamaï¿½oEsperado = 1;
+		Integer tamaï¿½oObtenido = inscripcion.getNotas().size();
 		
-		assertEquals(tamañoEsperado, tamañoObtenido);
+		assertEquals(tamaï¿½oEsperado, tamaï¿½oObtenido);
+	}
+	
+	@Test
+	public void AlCrearUnaInscripcionSeGuardaElAlumnoYElCursoAlQuePertenece() {
+		Alumno alumno = new Alumno();
+		Curso curso = new Curso();
+		
+		Inscripcion inscripcion = new Inscripcion(alumno, curso);
+		
+		assertEquals(alumno, inscripcion.getAlumno());
+		assertEquals(curso, inscripcion.getCurso());
+	}
+	
+	@Test
+	public void noSePermitenInscripcionesDuplicadasParaElMismoAlumnoYCurso() {
+		Inscripcion inscripcionUno = new Inscripcion(new Alumno(), new Curso());
+		Inscripcion inscripcionDos = new Inscripcion(new Alumno(), new Curso());
+		
+		HashSet<Inscripcion> inscripciones = new HashSet<>(); // AcÃ¡ faltarÃ­a sobreescribir el mÃ©todo equals y hashCode en la clase Inscripcion.
+		inscripciones.add(inscripcionUno);
+		inscripciones.add(inscripcionDos);
+		
+		assertEquals(1, inscripciones.size());
 	}
 
 }
