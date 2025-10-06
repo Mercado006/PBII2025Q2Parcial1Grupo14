@@ -36,13 +36,62 @@ public class Sistema {
 	
 	public boolean anadirAlumnoACurso(Alumno alumno, Curso curso) {
 		// TODO Auto-generated method stub
-		return false;
+		Inscripcion nuevaInscripcion = new Inscripcion(curso.getIdCurso(), alumno.getDni());
+		return this.inscripciones.add(nuevaInscripcion);
 	}
 
 	public boolean anadirProfesorACurso(Profesor profesor, Curso curso) {
 		// TODO Auto-generated method stub
+		for(Profesor p : profesores) {
+			if(p.getDni()==profesor.getDni())
+				return p.anadirCurso(curso);
+		}
+		
 		return false;
+		
 	}
+
+
+	public Set<Curso> getCursos() {
+		return cursos;
+	}
+
+
+	public void setCursos(Set<Curso> cursos) {
+		this.cursos = cursos;
+	}
+
+
+	public Set<Profesor> getProfesores() {
+		return profesores;
+	}
+
+
+	public void setProfesores(Set<Profesor> profesores) {
+		this.profesores = profesores;
+	}
+
+
+	public Set<Alumno> getAlumnos() {
+		return alumnos;
+	}
+
+
+	public void setAlumnos(Set<Alumno> alumnos) {
+		this.alumnos = alumnos;
+	}
+
+
+	public Set<Inscripcion> getInscripciones() {
+		return inscripciones;
+	}
+
+
+	public void setInscripciones(Set<Inscripcion> inscripciones) {
+		this.inscripciones = inscripciones;
+	}
+	
+	
 
 
 

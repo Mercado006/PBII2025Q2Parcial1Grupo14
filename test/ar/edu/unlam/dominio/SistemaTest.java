@@ -9,7 +9,7 @@ public class SistemaTest {
 	
 	@Test
 	public void crearUnCursoYAgregarloAlSistema() {
-		Curso curso = new Curso();
+		Curso curso = new Curso(1, "PB2", 20);
 		Sistema sistema = new Sistema();
 
 		assertTrue(sistema.agregarCurso(curso));
@@ -18,8 +18,8 @@ public class SistemaTest {
 	
 	@Test
 	public void dadoQueExisteUnSistemaElMetodoAnadirAlumnoACursoDevuelveTrue() {
-		Alumno alumno = new Alumno();
-		Curso curso = new Curso();
+		Alumno alumno = new Alumno(24330190, "Pepito", "Suarez");
+		Curso curso = new Curso(1, "PB2", 20);
 		
 		Sistema sistema = new Sistema();
 		
@@ -28,25 +28,27 @@ public class SistemaTest {
 	
 	@Test
 	public void dadoQueExisteUnSistemaElMetodoAnadirProfesorACursoDevuelveTrue() {
-		Profesor profesor = new Profesor();
-		Curso curso = new Curso();
+		Profesor profesor = new Profesor(22330190, "Juancito", "Perez");
+		Curso curso = new Curso(1, "PB2", 20);
 		
 		Sistema sistema = new Sistema();
+		sistema.agregarCurso(curso);
+		sistema.anadirProfesor(profesor);
 		
 		assertTrue(sistema.anadirProfesorACurso(profesor, curso));
 	}
 	
 	@Test
 	public void dadoQueExisteUnSistemaConUnaListaDeInscripcionesElMetodoAnadirAlumnoACursoAnadeUnaInscripcionADichaLista() {
-		Curso curso = new Curso();
-		Alumno alumno = new Alumno();
+		Curso curso = new Curso(1, "PB2", 20);
+		Alumno alumno = new Alumno(24330190, "Pepito", "Suarez");
 		
 		Sistema sistema = new Sistema();
 		
 		sistema.anadirAlumnoACurso(alumno, curso);
 		
 		Integer tamanoEsperado = 1;
-		Integer tamanoObtenido = sistema.getInscripciones.size();
+		Integer tamanoObtenido = sistema.getInscripciones().size();
 		
 		assertEquals(tamanoEsperado, tamanoObtenido);
 	}
