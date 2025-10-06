@@ -1,5 +1,6 @@
 package ar.edu.unlam.dominio;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ import org.junit.Test;
 public class CursoTest {
 	
 	@Test
-	public void ñadirUnAlumnoAlCurso() {
+	public void añadirUnAlumnoAlCurso() {
 		Curso curso = new Curso();
 		Alumno alumno = new Alumno();
 		AlumnoCurso unionAlumnoCurso = new AlumnoCurso(); //se crea una clase intermedia, revisar la clase del 01/10
@@ -35,7 +36,7 @@ public class CursoTest {
 		
 		Curso curso = new Curso();
 		Sistema sistema = new Sistema();
-		sistema.anadirCurso(curso);
+		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor, curso);
 		sistema.inscribirAlumno(alumno, curso);
 		

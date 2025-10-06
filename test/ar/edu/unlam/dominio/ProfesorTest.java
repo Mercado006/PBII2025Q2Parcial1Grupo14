@@ -18,7 +18,7 @@ public class ProfesorTest {
 		Curso curso = new Curso();
 		
 		Sistema sistema = new Sistema();
-		sistema.anadirCurso(curso);
+		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor, curso);
 		sistema.inscribirAlumno(alumno, curso);
 
@@ -52,7 +52,7 @@ public class ProfesorTest {
 		Curso curso = new Curso();
 		
 		Sistema sistema = new Sistema();
-		sistema.anadirCurso(curso);
+		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor, curso);
 		sistema.inscribirAlumno(alumno, curso);
 
@@ -78,7 +78,7 @@ public class ProfesorTest {
 		Curso curso = new Curso();
 		
 		Sistema sistema = new Sistema();
-		sistema.anadirCurso(curso);
+		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor, curso);
 		sistema.inscribirAlumno(alumno, curso);
 
@@ -98,7 +98,7 @@ public class ProfesorTest {
 		Curso curso = new Curso();
 		
 		Sistema sistema = new Sistema();
-		sistema.anadirCurso(curso);
+		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor, curso);
 		sistema.inscribirAlumno(alumno, curso);
 
@@ -125,7 +125,7 @@ public class ProfesorTest {
 		Curso curso = new Curso();
 		
 		Sistema sistema = new Sistema();
-		sistema.anadirCurso(curso);
+		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor, curso);
 		sistema.inscribirAlumno(alumnoUno, curso);
 		sistema.inscribirAlumno(alumnoDos, curso);
@@ -146,7 +146,7 @@ public class ProfesorTest {
 		Curso curso = new Curso();
 		
 		Sistema sistema = new Sistema();
-		sistema.anadirCurso(curso);
+		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor, curso);
 		sistema.inscribirAlumno(alumno, curso);
 

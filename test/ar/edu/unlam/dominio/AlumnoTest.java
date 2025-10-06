@@ -72,10 +72,10 @@ public class AlumnoTest {
 		LocalDate fechaQueSeEntrego = LocalDate.of(2025, 10, 10);
 		alumno.entregarTrabajoPractico(trabajoPractico);
 		
-		Integer tamañoEsperado = 1;
-		Integer tamañoObtenido = profesor.obtenerEntregasTrabajosPracticos().size();
+		Integer tamanoEsperado = 1;
+		Integer tamanoObtenido = profesor.obtenerEntregasTrabajosPracticos().size();
 		
-		assertEquals(tamañoEsperado, tamañoObtenido);
+		assertEquals(tamanoEsperado, tamanoObtenido);
 	}
 	
 	@Test	

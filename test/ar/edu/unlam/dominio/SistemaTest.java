@@ -1,5 +1,6 @@
 package ar.edu.unlam.dominio;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -16,38 +17,38 @@ public class SistemaTest {
 	}
 	
 	@Test
-	public void dadoQueExisteUnSistemaElMetodoAñadirAlumnoACursoDevuelveTrue() {
+	public void dadoQueExisteUnSistemaElMetodoAnadirAlumnoACursoDevuelveTrue() {
 		Alumno alumno = new Alumno();
 		Curso curso = new Curso();
 		
 		Sistema sistema = new Sistema();
 		
-		assertTrue(sistema.añadirAlumnoACurso(alumno, curso));
+		assertTrue(sistema.anadirAlumnoACurso(alumno, curso));
 	}
 	
 	@Test
-	public void dadoQueExisteUnSistemaElMetodoAñadirProfesorACursoDevuelveTrue() {
+	public void dadoQueExisteUnSistemaElMetodoAnadirProfesorACursoDevuelveTrue() {
 		Profesor profesor = new Profesor();
 		Curso curso = new Curso();
 		
 		Sistema sistema = new Sistema();
 		
-		assertTrue(sistema.añadirProfesorACurso(profesor, curso));
+		assertTrue(sistema.anadirProfesorACurso(profesor, curso));
 	}
 	
 	@Test
-	public void dadoQueExisteUnSistemaConUnaListaDeInscripcionesElMetodoAñadirAlumnoACursoAñadeUnaInscripcionADichaLista() {
+	public void dadoQueExisteUnSistemaConUnaListaDeInscripcionesElMetodoAnadirAlumnoACursoAnadeUnaInscripcionADichaLista() {
 		Curso curso = new Curso();
 		Alumno alumno = new Alumno();
 		
 		Sistema sistema = new Sistema();
 		
-		sistema.añadirAlumnoACurso(alumno, curso);
+		sistema.anadirAlumnoACurso(alumno, curso);
 		
-		Integer tamañoEsperado = 1;
-		Integer tamañoObtenido = sistema.getInscripciones.size();
+		Integer tamanoEsperado = 1;
+		Integer tamanoObtenido = sistema.getInscripciones.size();
 		
-		assertEquals(tamañoEsperado, tamañoObtenido);
+		assertEquals(tamanoEsperado, tamanoObtenido);
 	}
 	
 }

@@ -1,5 +1,12 @@
 package ar.edu.unlam.dominio;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.junit.Test;
+
 public class InscripcionTest {
 	
 	@Test
@@ -24,10 +31,10 @@ public class InscripcionTest {
 		
 		inscripcion.agregarNota(nota);
 		
-		Integer tama�oEsperado = 1;
-		Integer tama�oObtenido = inscripcion.getNotas().size();
+		Integer tamanoEsperado = 1;
+		Integer tamanoObtenido = inscripcion.getNotas().size();
 		
-		assertEquals(tama�oEsperado, tama�oObtenido);
+		assertEquals(tamanoEsperado, tamanoObtenido);
 	}
 	
 	@Test
@@ -46,7 +53,7 @@ public class InscripcionTest {
 		Inscripcion inscripcionUno = new Inscripcion(new Alumno(), new Curso());
 		Inscripcion inscripcionDos = new Inscripcion(new Alumno(), new Curso());
 		
-		HashSet<Inscripcion> inscripciones = new HashSet<>(); // Acá faltaría sobreescribir el método equals y hashCode en la clase Inscripcion.
+		Set<Inscripcion> inscripciones = new HashSet<>(); // Acá faltaría sobreescribir el método equals y hashCode en la clase Inscripcion.
 		inscripciones.add(inscripcionUno);
 		inscripciones.add(inscripcionDos);
 		
