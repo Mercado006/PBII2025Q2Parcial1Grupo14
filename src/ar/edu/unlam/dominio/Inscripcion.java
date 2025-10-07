@@ -36,7 +36,7 @@ public class Inscripcion {
 		this.dniAlumno = dniAlumno;
 	}
 
-	public void agregarNota(Double notaUno) {
+	public void agregarNota(Integer notaUno) {
 		this.notas.add(notaUno);
 	}
 
@@ -44,8 +44,8 @@ public class Inscripcion {
 
 		Double acumulador = 0.0;
 		if (this.notas != null && this.notas.isEmpty() != true) {
-			for (Double doubleNota : this.notas) {
-				acumulador += doubleNota;
+			for (Integer nota : this.notas) {
+				acumulador += nota;
 			}
 
 			return acumulador / this.notas.size();
