@@ -1,19 +1,32 @@
 package ar.edu.unlam.dominio;
 
+<<<<<<< HEAD
 import java.util.Objects;
+=======
+import java.util.HashSet;
+import java.util.Set;
+>>>>>>> a72ad9480cb8dd2df78053002003ec3fa32826f5
 
 public class Curso {
 	
 	private Integer idCurso;
 	private String nombre;
 	private Integer capacidad;
-
+	private Set<Alumno> alumnos;
 	
 	public Curso(Integer idCurso, String nombre, Integer capacidad) {
-		super();
 		this.idCurso = idCurso;
 		this.nombre = nombre;
 		this.capacidad = capacidad;
+		this.alumnos = new HashSet<>();
+	}
+
+	public Set<Alumno> getAlumnos() {
+		return alumnos;
+	}
+
+	public Boolean anadirAlumno(Alumno alumno) {
+		return alumnos.add(alumno);
 	}
 
 	public Integer getIdCurso() {
@@ -39,6 +52,7 @@ public class Curso {
 	public void setCapacidad(Integer capacidad) {
 		this.capacidad = capacidad;
 	}
+<<<<<<< HEAD
 
 	@Override
 	public int hashCode() {
@@ -61,4 +75,6 @@ public class Curso {
 	
 	
 	
+=======
+>>>>>>> a72ad9480cb8dd2df78053002003ec3fa32826f5
 }

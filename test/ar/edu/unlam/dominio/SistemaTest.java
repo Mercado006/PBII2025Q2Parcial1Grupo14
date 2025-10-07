@@ -9,12 +9,11 @@ import org.junit.Test;
 public class SistemaTest {
 	
 	@Test
-	public void crearUnCursoYAgregarloAlSistema() {
+	public void dadoQueExisteUnSistemaElMetodoAgregarCursoDevuelveTrue() {
 		Curso curso = new Curso(1, "PB2", 20);
 		Sistema sistema = new Sistema();
 
 		assertTrue(sistema.agregarCurso(curso));
-		
 	}
 	
 	@Test

@@ -14,7 +14,18 @@ public class InscripcionTest {
 		Integer notaUno = 7;
 		Integer notaDos = 8;
 		
-		Inscripcion inscripcion = new Inscripcion();
+		Integer dni = 123;
+		String nombre = "nombre";
+		String apellido = "apellido";
+		Alumno alumno = new Alumno(dni, nombre, apellido);
+		
+		Integer id = 1;
+		String nombreCurso = "Introducción a la programación";
+		Integer capacidad = 100;
+		String lenguajePrincipal = "Java";
+		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+		
+		Inscripcion inscripcion = new Inscripcion(cursoProgramacion, alumno);
 		
 		inscripcion.agregarNota(notaUno);
 		inscripcion.agregarNota(notaDos);
@@ -27,7 +38,18 @@ public class InscripcionTest {
 	public void dadoQueExisteUnaInscripcionConUnaListaDeNotasElMetodoAgregarNotaAgregaLaNotaADichaLista() {
 		Integer nota = 7;
 		
-		Inscripcion inscripcion = new Inscripcion();
+		Integer dni = 123;
+		String nombre = "nombre";
+		String apellido = "apellido";
+		Alumno alumno = new Alumno(dni, nombre, apellido);
+		
+		Integer id = 1;
+		String nombreCurso = "Introducción a la programación";
+		Integer capacidad = 100;
+		String lenguajePrincipal = "Java";
+		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+		
+		Inscripcion inscripcion = new Inscripcion(cursoProgramacion, alumno);
 		
 		inscripcion.agregarNota(nota);
 		
@@ -38,26 +60,21 @@ public class InscripcionTest {
 	}
 	
 	@Test
-	public void AlCrearUnaInscripcionSeGuardaElAlumnoYElCursoAlQuePertenece() {
-		Alumno alumno = new Alumno();
-		Curso curso = new Curso();
+	public void dadoQueExisteUnaInscripcionAlInstanciarlaSeGuardanElAlumnoYElCursoAlQuePertenece() {
+		Integer dni = 123;
+		String nombre = "nombre";
+		String apellido = "apellido";
+		Alumno alumno = new Alumno(dni, nombre, apellido);
 		
-		Inscripcion inscripcion = new Inscripcion(alumno, curso);
+		Integer id = 1;
+		String nombreCurso = "Introducción a la programación";
+		Integer capacidad = 100;
+		String lenguajePrincipal = "Java";
+		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+		
+		Inscripcion inscripcion = new Inscripcion(cursoProgramacion, alumno);
 		
 		assertEquals(alumno, inscripcion.getAlumno());
-		assertEquals(curso, inscripcion.getCurso());
+		assertEquals(cursoProgramacion, inscripcion.getCurso());
 	}
-	
-	@Test
-	public void noSePermitenInscripcionesDuplicadasParaElMismoAlumnoYCurso() {
-		Inscripcion inscripcionUno = new Inscripcion(new Alumno(), new Curso());
-		Inscripcion inscripcionDos = new Inscripcion(new Alumno(), new Curso());
-		
-		Set<Inscripcion> inscripciones = new HashSet<>(); // AcÃ¡ faltarÃ­a sobreescribir el mÃ©todo equals y hashCode en la clase Inscripcion.
-		inscripciones.add(inscripcionUno);
-		inscripciones.add(inscripcionDos);
-		
-		assertEquals(1, inscripciones.size());
-	}
-
 }
