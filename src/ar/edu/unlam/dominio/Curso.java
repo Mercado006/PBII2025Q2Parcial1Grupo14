@@ -1,6 +1,6 @@
 package ar.edu.unlam.dominio;
 
-
+import java.util.Objects;
 
 public class Curso {
 	
@@ -38,6 +38,23 @@ public class Curso {
 
 	public void setCapacidad(Integer capacidad) {
 		this.capacidad = capacidad;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idCurso);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Curso other = (Curso) obj;
+		return Objects.equals(idCurso, other.idCurso);
 	}
 	
 	

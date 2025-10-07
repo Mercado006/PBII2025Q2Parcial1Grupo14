@@ -10,12 +10,13 @@ import org.junit.Test;
 public class CursoTest {
 	
 	@Test
-	public void añadirUnAlumnoAlCurso() {
-		Curso curso = new Curso();
-		Alumno alumno = new Alumno();
-		AlumnoCurso unionAlumnoCurso = new AlumnoCurso(); //se crea una clase intermedia, revisar la clase del 01/10
+	public void dadoQueExisteUnSistemaElMetodoAnadirAlumnoACursoDevuelveTrue() {
+		Alumno alumno = new Alumno(24330190, "Pepito", "Suarez");
+		Curso curso = new Curso(1, "PB2", 20);
 		
-		assertTrue(unionAlumnoCurso.añadirAlumnoACurso(curso, alumno));
+		Sistema sistema = new Sistema();
+		
+		assertTrue(sistema.anadirAlumnoACurso(alumno, curso));
 	}
 	
 	@Test

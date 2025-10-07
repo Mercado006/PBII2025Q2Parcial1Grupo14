@@ -43,8 +43,12 @@ public class Sistema {
 	public boolean anadirProfesorACurso(Profesor profesor, Curso curso) {
 		// TODO Auto-generated method stub
 		for(Profesor p : profesores) {
-			if(p.getDni()==profesor.getDni())
+			if(p.getDni()==profesor.getDni()) {
+				if(p.getCursosAsignados().contains(curso))
+					return false;
 				return p.anadirCurso(curso);
+			}
+				
 		}
 		
 		return false;

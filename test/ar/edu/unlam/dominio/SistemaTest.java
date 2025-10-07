@@ -1,6 +1,7 @@
 package ar.edu.unlam.dominio;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -25,6 +26,8 @@ public class SistemaTest {
 		
 		assertTrue(sistema.anadirAlumnoACurso(alumno, curso));
 	}
+	
+	
 	
 	@Test
 	public void dadoQueExisteUnSistemaElMetodoAnadirProfesorACursoDevuelveTrue() {
@@ -55,11 +58,16 @@ public class SistemaTest {
 	
 	@Test
 	public void dadoQueYaExisteUnProfesorAsignadoAlCursoNoSePermiteAsignarloNuevamente() {
-		Curso curso = new Curso();
-		Profesor profesor = new Profesor();
+		Curso curso = new Curso(1, "PB2", 20);
+		Profesor profesor = new Profesor(22330190, "Juancito", "Perez");
 		Sistema sistema = new Sistema();
 		
-		assertTrue(sistema.asignarProfesorACurso(profesor, curso));
-		assertFalse(sistema.asignarProfesorACurso(profesor, curso));
+		sistema.anadirProfesor(profesor);
+		
+		assertTrue(sistema.anadirProfesorACurso(profesor, curso));
+		
+		assertFalse(sistema.anadirProfesorACurso(profesor, curso));
 	}
+	
+	
 }
