@@ -157,7 +157,4 @@ public class ProfesorTest {
 	 * ArrayList<>(sistema.obtenerInscripciones());
 	 * assertTrue(inscripciones.get(0).getNotas().contains(nota)); }
 	 */
-	
-
-
 }

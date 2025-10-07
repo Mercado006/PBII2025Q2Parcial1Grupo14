@@ -10,27 +10,22 @@ public class Sistema {
 	private Set<Alumno> alumnos;
 	private Set<Inscripcion> inscripciones;
 	
-	
 	public Sistema() {
 		this.cursos = new HashSet<Curso>();
 		this.profesores = new HashSet<Profesor>();
 		this.alumnos = new HashSet<Alumno>();
 		this.inscripciones = new HashSet<Inscripcion>();
 	}
-	
 
 	public boolean agregarCurso(Curso curso) {
-		// TODO Auto-generated method stub
 		return this.cursos.add(curso);
 	}
 
 	public boolean anadirProfesor(Profesor profesor) {
-		// TODO Auto-generated method stub
 		return this.profesores.add(profesor);
 	}
 	
 	public boolean anadirAlumno(Alumno alumno) {
-		// TODO Auto-generated method stub
 		return this.alumnos.add(alumno);
 	}
 	
@@ -41,14 +36,11 @@ public class Sistema {
 	}
 
 	public boolean anadirProfesorACurso(Profesor profesor, Curso curso) {
-		// TODO Auto-generated method stub
 		for(Profesor p : profesores) {
 			if(p.getDni()==profesor.getDni())
 				return p.anadirCurso(curso);
 		}
-		
 		return false;
-		
 	}
 
 
@@ -90,9 +82,4 @@ public class Sistema {
 	public void setInscripciones(Set<Inscripcion> inscripciones) {
 		this.inscripciones = inscripciones;
 	}
-	
-	
-
-
-
 }

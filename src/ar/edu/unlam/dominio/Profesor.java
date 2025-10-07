@@ -52,26 +52,16 @@ public class Profesor {
 		this.apellido = apellido;
 	}
 
-
 	public void asignarTrabajoPracticoACurso(TrabajoPractico trabajoPractico, Curso curso) {
 		for(Alumno alumno : curso.getAlumnos()) {
 			alumno.recibirTrabajoPractico(trabajoPractico);
 		}
 	}
 
-
 	public void recibirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPracticoUno) {
 		this.entregasDeTrabajosPracticos.add(entregaTrabajoPracticoUno);
 	}
 
-	/*public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPracticoUno) {
-		for(EntregaTrabajoPractico tp : entregasDeTrabajosPracticos) {
-			if(tp.getId()==entregaTrabajoPracticoUno.getId() && !tp.isCorregido())
-				tp.setCorregido(true);
-				
-		}
-	} Por qué hay uno con nota y otro sin nota*/
-	
 	public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPractico, Integer nota) {
 		for(EntregaTrabajoPractico tp : entregasDeTrabajosPracticos) {
 			if(tp.getId()==entregaTrabajoPractico.getId() && !tp.isCorregido()) {
