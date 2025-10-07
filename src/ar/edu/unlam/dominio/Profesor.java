@@ -9,7 +9,7 @@ public class Profesor {
 	private String nombre;
 	private String apellido;
 	private List<Curso> cursosAsignados;
-	private List<EntregaTrabajoPractico> trabajosPractico;
+	private List<EntregaTrabajoPractico> entregasDeTrabajosPracticos;
 	
 	public Profesor(Integer dni, String nombre, String apellido) {
 		super();
@@ -17,105 +17,88 @@ public class Profesor {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.cursosAsignados = new ArrayList<Curso>();
-		this.trabajosPractico = new ArrayList<EntregaTrabajoPractico>();
+		this.entregasDeTrabajosPracticos = new ArrayList<EntregaTrabajoPractico>();
 	}
 	
 	public List<Curso> getCursosAsignados(){
 		return cursosAsignados;
 	}
-	
+
 	public boolean anadirCurso(Curso curso) {
 		return this.cursosAsignados.add(curso);
 	}
-	
 	
 	public Integer getDni() {
 		return dni;
 	}
 
-
-
-
 	public void setDni(Integer dni) {
 		this.dni = dni;
 	}
-
-
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
-
-
 	public String getApellido() {
 		return apellido;
 	}
-
-
-
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
 
-
-
 	public void asignarTrabajoPracticoACurso(TrabajoPractico trabajoPractico, Curso curso) {
-		// TODO Auto-generated method stub
-		
+		for(Alumno alumno : curso.getAlumnos()) {
+			alumno.recibirTrabajoPractico(trabajoPractico);
+		}
 	}
 
 
 	public void recibirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPracticoUno) {
-		// TODO Auto-generated method stub
-		this.trabajosPractico.add(entregaTrabajoPracticoUno);
+		this.entregasDeTrabajosPracticos.add(entregaTrabajoPracticoUno);
 	}
 
-	public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPracticoUno) {
-		// TODO Auto-generated method stub
-		for(EntregaTrabajoPractico tp : trabajosPractico) {
+	/*public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPracticoUno) {
+		for(EntregaTrabajoPractico tp : entregasDeTrabajosPracticos) {
 			if(tp.getId()==entregaTrabajoPracticoUno.getId() && !tp.isCorregido())
 				tp.setCorregido(true);
 				
 		}
-	}
+	} Por qué hay uno con nota y otro sin nota*/
 	
 	public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPractico, Integer nota) {
-		// TODO Auto-generated method stub
-		for(EntregaTrabajoPractico tp : trabajosPractico) {
+		for(EntregaTrabajoPractico tp : entregasDeTrabajosPracticos) {
 			if(tp.getId()==entregaTrabajoPractico.getId() && !tp.isCorregido()) {
 				tp.setCorregido(true);
 				tp.setNota(nota);
-			}
-				
-				
+			}	
 		}
 	}
+	
+	/*public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPractico, Integer nota) {
+		for(EntregaTrabajoPractico entregaTP : entregasDeTrabajosPracticos) {
+			if(entregaTP.equals(entregaTrabajoPractico) && !entregaTP.isCorregido()) {
+				entregaTP.setCorregido(true);
+				entregaTP.setNota(nota);
+			}	
+		}
+	}*/
 
 	public List<EntregaTrabajoPractico> obtenerEntregaDeTrabajosPracticosSinCorregir() {
-		// TODO Auto-generated method stub
-		List<EntregaTrabajoPractico> listaTrabajos = new ArrayList<EntregaTrabajoPractico>();
+		List<EntregaTrabajoPractico> listaDeTrabajosPracticonSinCorregir = new ArrayList<EntregaTrabajoPractico>();
 		
-		for(EntregaTrabajoPractico tp : trabajosPractico) {
-			if(!tp.isCorregido()) {
-				listaTrabajos.add(tp);
+		for(EntregaTrabajoPractico entregaTrabajoPractico : entregasDeTrabajosPracticos) {
+			if(!entregaTrabajoPractico.isCorregido()) {
+				listaDeTrabajosPracticonSinCorregir.add(entregaTrabajoPractico);
 			}
 		}
 		
-		return listaTrabajos;
+		return listaDeTrabajosPracticonSinCorregir;
 	}
-
-	
-
 }

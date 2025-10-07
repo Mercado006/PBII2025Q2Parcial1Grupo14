@@ -12,11 +12,10 @@ public class EntregaTrabajoPractico {
 	private boolean corregido;
 	
 	public EntregaTrabajoPractico(Alumno alumno, LocalDate fechaEntrega, Curso curso) {
-		// TODO Auto-generated constructor stub
 		this.alumno = alumno;
 		this.fechaEntrega = fechaEntrega;
 		this.curso = curso;
-		this.corregido=false;
+		this.corregido = false;
 	}
 
 	public Alumno getAlumno() {
