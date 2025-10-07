@@ -30,12 +30,22 @@ public class Sistema {
 	}
 	
 	public boolean anadirAlumnoACurso(Alumno alumno, Curso curso) {
-		Inscripcion nuevaInscripcion = new Inscripcion(curso, alumno);
-		return this.inscripciones.add(nuevaInscripcion);
+		Inscripcion inscripcion = new Inscripcion(curso, alumno);
+		for(Curso c : this.cursos) {
+			if(c.getIdCurso()==curso.getIdCurso()) {
+				if(c.getCapacidad()>c.getAlumnos().size()) {
+					c.anadirAlumno(alumno);
+					this.inscripciones.add(inscripcion);
+					return true;
+				}
+				return false;
+			}
+		}
+		return false;
 	}
 
 	public boolean anadirProfesorACurso(Profesor profesor, Curso curso) {
-		for(Profesor p : profesores) {
+		for(Profesor p : this.profesores) {
 			if(p.getDni()==profesor.getDni()) {
 				if(p.getCursosAsignados().contains(curso))
 					return false;

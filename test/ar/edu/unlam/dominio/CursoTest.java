@@ -12,20 +12,25 @@ public class CursoTest {
 	@Test
 	public void dadoQueExisteUnSistemaElMetodoAnadirAlumnoACursoDevuelveTrue() {
 		Alumno alumno = new Alumno(24330190, "Pepito", "Suarez");
-		Curso curso = new Curso(1, "PB2", 20);
-		
+		Curso curso = new CursoProgramacion(1, "PB2", 20, "Java");
 		Sistema sistema = new Sistema();
+		sistema.agregarCurso(curso);
 		
 		assertTrue(sistema.anadirAlumnoACurso(alumno, curso));
 	}
 	
 	@Test
 	public void dadoNoQuedanCuposEnElCursoNoSePuedeAÃ±adirAlAlumno() {
-		Curso curso = new Curso();
-		Alumno alumno = new Alumno();
-		AlumnoCurso unionAlumnoCurso = new AlumnoCurso();
+		Curso curso = new CursoProgramacion(1, "PB2", 1, "Java");
+		Alumno alumno1 = new Alumno(24330190, "Pepito", "Suarez");
+		Alumno alumno2 = new Alumno(23230190, "Jose", "Suarez");
+		Sistema sistema = new Sistema();
+		sistema.agregarCurso(curso);
+		sistema.anadirAlumno(alumno1);
+		sistema.anadirAlumno(alumno2);
+		sistema.anadirAlumnoACurso(alumno1, curso);
 		
-		assertFalse(unionAlumnoCurso.aÃ±adirAlumnoACurso(curso, alumno));
+		assertFalse(sistema.anadirAlumnoACurso(alumno2, curso));
 
 	}
 	
@@ -39,7 +44,7 @@ public class CursoTest {
 		 Profesor profesor = new Profesor(dni, nombre, apellido);
 		
 		Integer id = 1;
-		String nombreCurso = "Introducción a la programación";
+		String nombreCurso = "Introduccion a la programaciï¿½n";
 		Integer capacidad = 100;
 		String lenguajePrincipal = "Java";
 		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
