@@ -5,7 +5,7 @@ public class CursoMusica extends Curso {
 	private String instrumentoPrincipal;
 	private Boolean requiereLecturaMusical;
 
-	public CursoMusica(Integer idCurso, String nombre, Integer capacidad, String instrumentoPrincipal, Boolean requiereLecturaMusical) {
+	public CursoMusica(Integer idCurso, String nombre, Integer capacidad, String instrumentoPrincipal) {
 		super(idCurso, nombre, capacidad);
 		this.instrumentoPrincipal = instrumentoPrincipal;
 		this.requiereLecturaMusical = requiereLecturaMusical;
@@ -17,13 +17,5 @@ public class CursoMusica extends Curso {
 
 	public void setInstrumentoPrincipal(String instrumentoPrincipal) {
 		this.instrumentoPrincipal = instrumentoPrincipal;
-	}
-
-	public Boolean getRequiereLecturaMusical() {
-		return requiereLecturaMusical;
-	}
-
-	public void setRequiereLecturaMusical(Boolean requiereLecturaMusical) {
-		this.requiereLecturaMusical = requiereLecturaMusical;
 	}
 }
