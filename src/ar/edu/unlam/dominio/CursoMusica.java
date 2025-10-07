@@ -3,12 +3,10 @@ package ar.edu.unlam.dominio;
 public class CursoMusica extends Curso {
 
 	private String instrumentoPrincipal;
-	private Boolean requiereLecturaMusical;
 
 	public CursoMusica(Integer idCurso, String nombre, Integer capacidad, String instrumentoPrincipal) {
 		super(idCurso, nombre, capacidad);
 		this.instrumentoPrincipal = instrumentoPrincipal;
-		this.requiereLecturaMusical = requiereLecturaMusical;
 	}
 
 	public String getInstrumentoPrincipal() {
