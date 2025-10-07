@@ -4,43 +4,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inscripcion {
-	
-	private Curso curso;
-	private Alumno alumno;
-	private List<Integer> notas;
 
-	public Inscripcion(Curso curso, Alumno alumno) {
-		this.curso = curso;
-		this.alumno = alumno;
-		this.notas = new ArrayList<Integer>();
+	private Integer idCurso;
+	private Integer dniAlumno;
+	private List<Double> notas;
+
+	public Inscripcion(Integer idCurso, Integer dniAlumno) {
+		super();
+		this.idCurso = idCurso;
+		this.dniAlumno = dniAlumno;
+		this.notas = new ArrayList<Double>();
 	}
 
-	public Curso getCurso() {
-		return curso;
+	public Integer getIdCurso() {
+		return idCurso;
 	}
 
-	public Alumno getAlumno() {
-		return alumno;
+	public void setIdCurso(Integer idCurso) {
+		this.idCurso = idCurso;
 	}
 
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public Integer getDniAlumno() {
+		return dniAlumno;
 	}
 
-	public void setAlumno(Alumno alumno) {
-		this.alumno = alumno;
+	public void setDniAlumno(Integer dniAlumno) {
+		this.dniAlumno = dniAlumno;
 	}
 
-
-	public List<Integer> getNotas() {
-		return notas;
-	}
-
-	public void agregarNota(Integer notaUno) {
+	public void agregarNota(Double notaUno) {
 		this.notas.add(notaUno);
 	}
 
 	public Double calcularPromedio() {
-		return null;
+
+		Double acumulador = 0.0;
+		if (this.notas != null && this.notas.isEmpty() != true) {
+			for (Double doubleNota : this.notas) {
+				acumulador += doubleNota;
+			}
+
+			return acumulador / this.notas.size();
+		}
+
+		return 0.0;
 	}
 }
