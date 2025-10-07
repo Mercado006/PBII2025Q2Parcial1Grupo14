@@ -30,7 +30,7 @@ public class Sistema {
 	}
 	
 	public boolean anadirAlumnoACurso(Alumno alumno, Curso curso) {
-		Inscripcion nuevaInscripcion = new Inscripcion(curso.getIdCurso(), alumno.getDni());
+		Inscripcion nuevaInscripcion = new Inscripcion(curso, alumno);
 		return this.inscripciones.add(nuevaInscripcion);
 	}
 

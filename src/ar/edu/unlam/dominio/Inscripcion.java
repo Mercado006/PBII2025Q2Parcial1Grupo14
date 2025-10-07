@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Inscripcion {
 
-	private Integer idCurso;
-	private Integer dniAlumno;
+	private Curso curso;
+	private Alumno alumno;
 	private List<Integer> notas;
 
-	public Inscripcion(Integer idCurso, Integer dniAlumno) {
+	public Inscripcion(Curso curso, Alumno alumno) {
 		super();
-		this.idCurso = idCurso;
-		this.dniAlumno = dniAlumno;
+		this.curso = curso;
+		this.alumno = alumno;
 		this.notas = new ArrayList<Integer>();
 	}
 
@@ -20,20 +20,24 @@ public class Inscripcion {
 		return notas;
 	}
 
-	public Integer getIdCurso() {
-		return idCurso;
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setIdCurso(Integer idCurso) {
-		this.idCurso = idCurso;
+	public Alumno getAlumno() {
+		return alumno;
 	}
 
-	public Integer getDniAlumno() {
-		return dniAlumno;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 
-	public void setDniAlumno(Integer dniAlumno) {
-		this.dniAlumno = dniAlumno;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+
+	public void setNotas(List<Integer> notas) {
+		this.notas = notas;
 	}
 
 	public void agregarNota(Integer notaUno) {
