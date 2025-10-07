@@ -31,22 +31,30 @@ public class CursoTest {
 	
 	@Test	
 	public void dadoQueExisteUnCursoConElMetodoRecibirTrabajoPracticoDevuelveFalseSiSeIntentaEntregarDichoTrabajoFueraDeLaFechaEstipuladaEnTrabajoPractico() {
-	// Testea el metodo de Curso recibirTrabajoPractico para que no se puedan entregar trabajos fuera de plazo.
-		Profesor profesor = new Profesor();
-		Alumno alumno = new Alumno();
+		 Integer dni = 123;
+		 String nombre = "nombre";
+		 String apellido = "apellido";
+		 Alumno alumno = new Alumno(dni, nombre, apellido);
 		
-		Curso curso = new Curso();
+		 Profesor profesor = new Profesor(dni, nombre, apellido);
+		
+		Integer id = 1;
+		String nombreCurso = "Introducción a la programación";
+		Integer capacidad = 100;
+		String lenguajePrincipal = "Java";
+		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+		
 		Sistema sistema = new Sistema();
-		sistema.agregarCurso(curso);
-		sistema.anadirProfesor(profesor, curso);
-		sistema.inscribirAlumno(alumno, curso);
+		sistema.agregarCurso(cursoProgramacion);
+		sistema.anadirProfesorACurso(profesor, cursoProgramacion);
+		sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 		
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
-		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
+		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, cursoProgramacion);
 		
-		profesor.asignarTrabajoPracticoACurso(trabajoPractico, curso);
+		profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
 		
 		LocalDate fechaQueSeEntrego = LocalDate.of(2025, 10, 21);
-		assertFalse(alumno.entregarTrabajoPractico(trabajoPractico));
+		assertFalse(alumno.entregarTrabajoPractico(trabajoPractico, fechaQueSeEntrego));
 	}
 }

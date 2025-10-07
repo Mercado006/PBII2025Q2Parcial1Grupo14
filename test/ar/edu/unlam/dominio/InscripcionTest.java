@@ -29,6 +29,8 @@ public class InscripcionTest {
 		
 		Double promedioEsperado = 7.5;
 		Double promedioObtenido = inscripcion.calcularPromedio();
+		
+		assertEquals(promedioEsperado, promedioObtenido);
 	}
 	
 	@Test
