@@ -9,6 +9,7 @@ public class Profesor {
 	private String nombre;
 	private String apellido;
 	private List<Curso> cursosAsignados;
+	private List<EntregaTrabajoPractico> trabajosPractico;
 	
 	public Profesor(Integer dni, String nombre, String apellido) {
 		super();
@@ -16,6 +17,7 @@ public class Profesor {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.cursosAsignados = new ArrayList<Curso>();
+		this.trabajosPractico = new ArrayList<EntregaTrabajoPractico>();
 	}
 	
 	public List<Curso> getCursosAsignados(){
@@ -74,29 +76,44 @@ public class Profesor {
 		
 	}
 
-	public boolean agregarCurso(Curso curso) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	public void recibirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPracticoUno) {
 		// TODO Auto-generated method stub
-		
+		this.trabajosPractico.add(entregaTrabajoPracticoUno);
 	}
 
 	public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPracticoUno) {
 		// TODO Auto-generated method stub
-		
+		for(EntregaTrabajoPractico tp : trabajosPractico) {
+			if(tp.getId()==entregaTrabajoPracticoUno.getId() && !tp.isCorregido())
+				tp.setCorregido(true);
+				
+		}
 	}
 	
 	public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPractico, Integer nota) {
 		// TODO Auto-generated method stub
-		
+		for(EntregaTrabajoPractico tp : trabajosPractico) {
+			if(tp.getId()==entregaTrabajoPractico.getId() && !tp.isCorregido()) {
+				tp.setCorregido(true);
+				tp.setNota(nota);
+			}
+				
+				
+		}
 	}
 
-	public List<TrabajoPractico> obtenerEntregaDeTrabajosPracticosSinCorregir() {
+	public List<EntregaTrabajoPractico> obtenerEntregaDeTrabajosPracticosSinCorregir() {
 		// TODO Auto-generated method stub
-		return null;
+		List<EntregaTrabajoPractico> listaTrabajos = new ArrayList<EntregaTrabajoPractico>();
+		
+		for(EntregaTrabajoPractico tp : trabajosPractico) {
+			if(!tp.isCorregido()) {
+				listaTrabajos.add(tp);
+			}
+		}
+		
+		return listaTrabajos;
 	}
 
 	
