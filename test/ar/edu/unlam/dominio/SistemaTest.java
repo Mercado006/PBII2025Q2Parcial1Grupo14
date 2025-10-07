@@ -53,4 +53,13 @@ public class SistemaTest {
 		assertEquals(tamanoEsperado, tamanoObtenido);
 	}
 	
+	@Test
+	public void dadoQueYaExisteUnProfesorAsignadoAlCursoNoSePermiteAsignarloNuevamente() {
+		Curso curso = new Curso();
+		Profesor profesor = new Profesor();
+		Sistema sistema = new Sistema();
+		
+		assertTrue(sistema.asignarProfesorACurso(profesor, curso));
+		assertFalse(sistema.asignarProfesorACurso(profesor, curso));
+	}
 }
