@@ -1,5 +1,6 @@
 package ar.edu.unlam.dominio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,10 @@ public class Alumno {
 		this.trabajosPracticos = new ArrayList<>();
 	}
 	
+	public List<TrabajoPractico> getTrabajosPracticos() {
+		return trabajosPracticos;
+	}
+
 	public void recibirTrabajoPractico(TrabajoPractico trabajoPractico) {
 		trabajosPracticos.add(trabajoPractico);
 	}
@@ -45,7 +50,7 @@ public class Alumno {
 		this.apellido = apellido;
 	}
 
-	public boolean entregarTrabajoPractico(TrabajoPractico trabajoPractico) {
+	public boolean entregarTrabajoPractico(TrabajoPractico trabajoPractico, LocalDate fechaEntrega) {
 		return false;
 	}
 }

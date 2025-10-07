@@ -7,13 +7,17 @@ public class Inscripcion {
 
 	private Integer idCurso;
 	private Integer dniAlumno;
-	private List<Double> notas;
+	private List<Integer> notas;
 
 	public Inscripcion(Integer idCurso, Integer dniAlumno) {
 		super();
 		this.idCurso = idCurso;
 		this.dniAlumno = dniAlumno;
-		this.notas = new ArrayList<Double>();
+		this.notas = new ArrayList<Integer>();
+	}
+
+	public List<Integer> getNotas() {
+		return notas;
 	}
 
 	public Integer getIdCurso() {

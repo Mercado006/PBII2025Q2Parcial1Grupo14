@@ -6,10 +6,10 @@ public class EntregaTrabajoPractico extends TrabajoPractico {
 	
 	private Alumno alumno;
 	private Boolean fueCorregido;
-	Integer nota;
+	private Integer nota;
 
-	public EntregaTrabajoPractico(Alumno alumno, LocalDate fechaLimite, Curso cursoAlQuePertenece, Integer nota) {
-		super(fechaLimite, cursoAlQuePertenece);
+	public EntregaTrabajoPractico(Alumno alumno, LocalDate fechaEntrega, Curso cursoAlQuePertenece) {
+		super(fechaEntrega, cursoAlQuePertenece);
 		this.alumno = alumno;
 		this.fueCorregido = false;
 		this.nota = null;

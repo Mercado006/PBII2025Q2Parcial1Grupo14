@@ -1,5 +1,6 @@
 package ar.edu.unlam.dominio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,5 +82,9 @@ public class Profesor {
 		}
 		
 		return listaDeTrabajosPracticonSinCorregir;
+	}
+
+	public List<EntregaTrabajoPractico> getEntregasDeTrabajosPracticos() {
+		return entregasDeTrabajosPracticos;
 	}
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,7 +13,6 @@ public class ProfesorTest {
 	
 	@Test
 	public void dadoQueExisteUnProfesorConElMetodoObtenerEntregasDeTrabajosPracticosSinCorregirDevuelveUnaListaDeEntregaTrabajoPracticoCuyoAtributoCorregidoSeaFalse() {
-	// Testea el metodo de Profesor obtenerEntregasDeTrabajosPracticosSinCorregir y verifica que en la lista que se devuelvan solamente existan aquellas EntregaTrabajoPractico cuyo Boolean corregido sea false.
 		Profesor profesor = new Profesor(21330190, "Juancito", "Suarez");
 		Alumno alumno = new Alumno(24330190, "Pepito", "Suarez");
 		Curso curso = new Curso(1, "PB2", 20);
@@ -31,7 +31,8 @@ public class ProfesorTest {
 		profesor.recibirEntregaTrabajoPractico(entregaTrabajoPracticoDos);
 		profesor.recibirEntregaTrabajoPractico(entregaTrabajoPracticoTres);
 
-		profesor.corregirEntregaTrabajoPractico(entregaTrabajoPracticoUno);
+		Integer nota = 7;
+		profesor.corregirEntregaTrabajoPractico(entregaTrabajoPracticoUno, nota);
 		
 		List<EntregaTrabajoPractico> entregasDetrabajosPracticosSinCorregirObtenidos = profesor.obtenerEntregaDeTrabajosPracticosSinCorregir();
 		
@@ -44,117 +45,161 @@ public class ProfesorTest {
 		assertEquals(tamanioEsperado, tamanioObtenido);
 	}
 	
-	/*
-	 * @Test public void
-	 * dadoQueExisteUnProfesorConElMetodoCorregirEntregaTrabajoPracticoSeActualizaElEstadoCorregidoDeEntregaTrabajoPracticoATrue
-	 * () { // Testea el metodo de Profesor corregirEntregaTrabajoPractico y
-	 * verifica con un entregaTrabajoPractico.getCorregido() que efectivamente se
-	 * haya actualizado el estado del atributo a true. Profesor profesor = new
-	 * Profesor(21330190, "Juancito", "Suarez"); Alumno alumno = new
-	 * Alumno(24330190, "Pepito", "Suarez"); Curso curso = new Curso(1, "PB2", 20);
-	 * 
-	 * Sistema sistema = new Sistema(); sistema.agregarCurso(curso);
-	 * sistema.anadirProfesor(profesor); sistema.anadirAlumnoACurso(alumno, curso);
-	 * 
-	 * LocalDate fechaEntrega = LocalDate.of(2025, 10, 20); EntregaTrabajoPractico
-	 * entregaTrabajoPractico = new EntregaTrabajoPractico(alumno, fechaEntrega,
-	 * curso);
-	 * 
-	 * profesor.recibirEntregaTrabajoPractico(entregaTrabajoPractico);
-	 * 
-	 * Integer nota = 7;
-	 * profesor.corregirEntregaTrabajoPractico(entregaTrabajoPractico, nota);
-	 * 
-	 * Boolean estadoCorregidoEsperado = true; Boolean estadoCorregidoObtenido =
-	 * entregaTrabajoPractico.getFueCorregido();
-	 * 
-	 * assertEquals(estadoCorregidoEsperado, estadoCorregidoObtenido); }
-	 * 
-	 * @Test public void
-	 * dadoQueExisteUnProfesorConElMetodoRecibirEntregaTrabajoPracticoDichaEntregaTrabajoPracticoSeAgregaASuListaDeEntregasDeTrabajosPracticos
-	 * () { // Testea el metodo de Profesor recibirEntregaTrabajoPractico para
-	 * verificar que efectivamente se anada el trabajo practico a su lista. Profesor
-	 * profesor = new Profesor(21330190, "Juancito", "Suarez"); Alumno alumno = new
-	 * Alumno(24330190, "Pepito", "Suarez"); Curso curso = new Curso(1, "PB2", 20);
-	 * 
-	 * Sistema sistema = new Sistema(); sistema.agregarCurso(curso);
-	 * sistema.anadirProfesor(profesor); sistema.anadirAlumnoACurso(alumno, curso);
-	 * 
-	 * LocalDate fechaEntrega = LocalDate.of(2025, 10, 20); EntregaTrabajoPractico
-	 * entregaTrabajoPractico = new EntregaTrabajoPractico(alumno, fechaEntrega,
-	 * curso);
-	 * 
-	 * profesor.recibirEntregaTrabajoPractico(entregaTrabajoPractico);
-	 * 
-	 * assertTrue(profesor.getTrabajosPractico.contains(entregaTrabajoPractico)); }
-	 * 
-	 * @Test public void
-	 * dadoQueExisteUnProfesorConElMetodoCorregirEntregaTrabajoPracticoSeActualizaLaNotaDeLaEntregaTrabajoPractico
-	 * () { // Testea el metodo de Profesor corregirEntregaTrabajoPractico y
-	 * verifica con un entregaTrabajoPractico.getNota() que efectivamente se haya
-	 * actualizado el atributo. Profesor profesor = new Profesor(21330190,
-	 * "Juancito", "Suarez"); Alumno alumno = new Alumno(24330190, "Pepito",
-	 * "Suarez"); Curso curso = new Curso(1, "PB2", 20);
-	 * 
-	 * Sistema sistema = new Sistema(); sistema.agregarCurso(curso);
-	 * sistema.anadirProfesor(profesor); sistema.anadirAlumnoACurso(alumno, curso);
-	 * 
-	 * LocalDate fechaEntrega = LocalDate.of(2025, 10, 20); EntregaTrabajoPractico
-	 * entregaTrabajoPractico = new EntregaTrabajoPractico(alumno, fechaEntrega,
-	 * curso);
-	 * 
-	 * profesor.recibirEntregaTrabajoPractico(entregaTrabajoPractico);
-	 * 
-	 * Integer nota = 7;
-	 * profesor.corregirEntregaTrabajoPractico(entregaTrabajoPractico, nota);
-	 * 
-	 * Integer notaEsperada = 7; Integer notaObtenida =
-	 * entregaTrabajoPractico.getNota();
-	 * 
-	 * assertEquals(notaEsperada, notaObtenida); }
-	 * 
-	 * @Test public void
-	 * dadoQueExisteUnProfesorConElMetodoAsignarTrabajoPracticoACursoDichoTrabajoPracticoEsAnadidoALaListaDeTrabajosPracticosDeTodosLosAlumnosInscriptosEnElCurso
-	 * () { // Testea el metodo de Profesor para que efectivamente asigne el T.P. a
-	 * todos los alumnos inscriptos en el curso. Profesor profesor = new
-	 * Profesor(21330190, "Juancito", "Suarez"); Alumno alumnoUno = new
-	 * Alumno(21330190, "Juancito", "Suarez"); Alumno alumnoDos = new
-	 * Alumno(21330190, "Juancito", "Suarez"); Curso curso = new Curso(1, "PB2",
-	 * 20);
-	 * 
-	 * Sistema sistema = new Sistema(); sistema.agregarCurso(curso);
-	 * sistema.anadirProfesor(profesor); sistema.anadirProfesorACurso(profesor,
-	 * curso); sistema.inscribirAlumno(alumnoUno, curso);
-	 * sistema.inscribirAlumno(alumnoDos, curso);
-	 * 
-	 * LocalDate fechaEntrega = LocalDate.of(2025, 10, 20); TrabajoPractico
-	 * trabajoPractico = new TrabajoPractico(fechaEntrega, curso);
-	 * 
-	 * profesor.asignarTrabajoPracticoACurso(trabajoPractico, curso);
-	 * 
-	 * assertTrue(alumnoUno.getTrabajosPracticos.contains(trabajoPractico));
-	 * assertTrue(alumnoDos.getTrabajosPracticos.contains(trabajoPractico)); }
-	 * 
-	 * @Test public void
-	 * dadoQueExisteUnProfesorConElMetodoCorregirEntregaTrabajoPracticoSeAgregaLaNotaObtenidaALaListaDeNotasCorrespondienteALaInscripcionQueRelacionaAlAlumnoConElCurso
-	 * () { Profesor profesor = new Profesor(); Alumno alumno = new Alumno(); Curso
-	 * curso = new Curso();
-	 * 
-	 * Sistema sistema = new Sistema(); sistema.agregarCurso(curso);
-	 * sistema.anadirProfesor(profesor, curso); sistema.inscribirAlumno(alumno,
-	 * curso);
-	 * 
-	 * LocalDate fechaEntrega = LocalDate.of(2025, 10, 20); EntregaTrabajoPractico
-	 * entregaTrabajoPractico = new EntregaTrabajoPractico(alumno, fechaEntrega,
-	 * curso);
-	 * 
-	 * profesor.recibirEntregaTrabajoPractico(entregaTrabajoPractico);
-	 * 
-	 * Integer nota = 7;
-	 * profesor.corregirEntregaTrabajoPractico(entregaTrabajoPractico, nota);
-	 * 
-	 * List<Inscripcion> inscripiones = new
-	 * ArrayList<>(sistema.obtenerInscripciones());
-	 * assertTrue(inscripciones.get(0).getNotas().contains(nota)); }
-	 */
+	 @Test public void dadoQueExisteUnProfesorConElMetodoCorregirEntregaTrabajoPracticoSeActualizaElEstadoCorregidoDeEntregaTrabajoPracticoATrue() { 
+		 Profesor profesor = new Profesor(21330190, "Juancito", "Suarez"); 
+		 Alumno alumno = new Alumno(24330190, "Pepito", "Suarez"); 
+		 
+		 Integer id = 1;
+		 String nombreCurso = "Introducción a la programación";
+		 Integer capacidad = 100;
+		 String lenguajePrincipal = "Java";
+		 Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+	  
+		 Sistema sistema = new Sistema(); 
+		 sistema.agregarCurso(cursoProgramacion);
+		 sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
+		 sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
+	  
+		 LocalDate fechaLimite = LocalDate.of(2025, 10, 20); 
+		 TrabajoPractico trabajoPractico = new TrabajoPractico(fechaLimite, cursoProgramacion);
+		  
+		 profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
+	  
+		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 21);
+		 alumno.entregarTrabajoPractico(trabajoPractico, fechaEntrega);
+			 
+		 Integer nota = 7;
+		 EntregaTrabajoPractico entregaTrabajoPractico = profesor.getEntregasDeTrabajosPracticos().get(0);
+		 
+		 profesor.corregirEntregaTrabajoPractico(entregaTrabajoPractico, nota); 
+	  
+		 Boolean estadoCorregidoEsperado = true; 
+		 Boolean estadoCorregidoObtenido = entregaTrabajoPractico.getFueCorregido();
+	  
+		 assertEquals(estadoCorregidoEsperado, estadoCorregidoObtenido); 
+	 }
+	  
+	  @Test public void dadoQueExisteUnProfesorConElMetodoRecibirEntregaTrabajoPracticoDichaEntregaTrabajoPracticoSeAgregaASuListaDeEntregasDeTrabajosPracticos() { 
+		 Profesor profesor = new Profesor(21330190, "Juancito", "Suarez"); 
+		 Alumno alumno = new Alumno(24330190, "Pepito", "Suarez"); 
+	  
+		 Integer id = 1;
+		 String nombreCurso = "Introducción a la programación";
+		 Integer capacidad = 100;
+		 String lenguajePrincipal = "Java";
+		 Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+	  
+		 Sistema sistema = new Sistema(); 
+		 sistema.agregarCurso(cursoProgramacion);
+		 sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
+		 sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
+	  
+		 LocalDate fechaLimite = LocalDate.of(2025, 10, 20); 
+		 TrabajoPractico trabajoPractico = new TrabajoPractico(fechaLimite, cursoProgramacion);
+		  
+		 profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
+	  
+		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 21);
+		 alumno.entregarTrabajoPractico(trabajoPractico, fechaEntrega);
+		 
+		 EntregaTrabajoPractico entregaTrabajoPractico = profesor.getEntregasDeTrabajosPracticos().get(0);
+	  
+		 assertTrue(profesor.getEntregasDeTrabajosPracticos().contains(entregaTrabajoPractico)); }
+	 
+	
+	  @Test public void dadoQueExisteUnProfesorConElMetodoCorregirEntregaTrabajoPracticoSeActualizaLaNotaDeLaEntregaTrabajoPractico() { 
+		  Profesor profesor = new Profesor(21330190, "Juancito", "Suarez"); 
+		  
+		  Alumno alumno = new Alumno(24330190, "Pepito", "Suarez"); 
+		  
+		  Integer id = 1;
+		  String nombreCurso = "Introducción a la programación";
+		  Integer capacidad = 100;
+		  String lenguajePrincipal = "Java";
+		  Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+	  
+		  Sistema sistema = new Sistema(); 
+		  sistema.agregarCurso(cursoProgramacion);
+		  sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
+		  sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
+	  
+		  LocalDate fechaLimite = LocalDate.of(2025, 10, 20); 
+		  TrabajoPractico trabajoPractico = new TrabajoPractico(fechaLimite, cursoProgramacion);
+		  
+		  profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
+	  
+		  LocalDate fechaEntrega = LocalDate.of(2025, 10, 21);
+		  alumno.entregarTrabajoPractico(trabajoPractico, fechaEntrega);
+			 
+		  Integer nota = 7;
+		  EntregaTrabajoPractico entregaTrabajoPractico = profesor.getEntregasDeTrabajosPracticos().get(0);
+		  
+		  profesor.corregirEntregaTrabajoPractico(entregaTrabajoPractico, nota); 
+	  
+		  Integer notaEsperada = 7; 
+		  Integer notaObtenida = entregaTrabajoPractico.getNota();
+	  
+		  assertEquals(notaEsperada, notaObtenida); 
+	 }
+	
+	 @Test public void dadoQueExisteUnProfesorConElMetodoAsignarTrabajoPracticoACursoDichoTrabajoPracticoEsAnadidoALaListaDeTrabajosPracticosDeTodosLosAlumnosInscriptosEnElCurso() { 
+		 Profesor profesor = new Profesor(21330190, "Juancito", "Suarez"); 
+		 Alumno alumnoUno = new Alumno(21330190, "Juancito", "Suarez"); 
+		 Alumno alumnoDos = new Alumno(21330190, "Juancito", "Suarez");
+		 
+		 Integer id = 1;
+		 String nombreCurso = "Introducción a la programación";
+		 Integer capacidad = 100;
+		 String lenguajePrincipal = "Java";
+		 Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+	  
+		 Sistema sistema = new Sistema(); 
+		 sistema.agregarCurso(cursoProgramacion);
+		 sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
+		 sistema.anadirAlumnoACurso(alumnoUno, cursoProgramacion);
+		 sistema.anadirAlumnoACurso(alumnoDos, cursoProgramacion);
+	  
+		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 20); 
+		 TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, cursoProgramacion);
+	  
+		 profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
+	  
+		 assertTrue(alumnoUno.getTrabajosPracticos().contains(trabajoPractico));
+		 assertTrue(alumnoDos.getTrabajosPracticos().contains(trabajoPractico)); 
+	 }
+	
+	 @Test public void dadoQueExisteUnProfesorConElMetodoCorregirEntregaTrabajoPracticoSeAgregaLaNotaObtenidaALaListaDeNotasCorrespondienteALaInscripcionQueRelacionaAlAlumnoConElCurso() { 
+		 Integer dni = 123;
+		 String nombre = "nombre";
+		 String apellido = "apellido";
+		 Alumno alumno = new Alumno(dni, nombre, apellido);
+		
+		 Profesor profesor = new Profesor(dni, nombre, apellido);
+			
+		 Integer id = 1;
+		 String nombreCurso = "Introducción a la programación";
+		 Integer capacidad = 100;
+		 String lenguajePrincipal = "Java";
+		 Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+					
+		 Sistema sistema = new Sistema(); sistema.agregarCurso(cursoProgramacion);
+		 sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
+		 sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
+		 
+		 LocalDate fechaLimite = LocalDate.of(2025, 10, 20); 
+		 
+		 TrabajoPractico trabajoPractico = new TrabajoPractico(fechaLimite, cursoProgramacion);
+		 
+		 profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
+		 
+		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 21);
+		 alumno.entregarTrabajoPractico(trabajoPractico, fechaEntrega);
+		 
+		 Integer nota = 7;
+		 EntregaTrabajoPractico entregaTrabajoPractico = profesor.getEntregasDeTrabajosPracticos().get(0);
+		 profesor.corregirEntregaTrabajoPractico(entregaTrabajoPractico, nota); 
+		 
+		 List<Inscripcion> inscripciones = new ArrayList<>(sistema.getInscripciones());
+		 assertTrue(inscripciones.get(0).getNotas().contains(nota)); 
+	 }
 }

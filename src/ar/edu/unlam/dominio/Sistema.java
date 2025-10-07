@@ -30,7 +30,6 @@ public class Sistema {
 	}
 	
 	public boolean anadirAlumnoACurso(Alumno alumno, Curso curso) {
-		// TODO Auto-generated method stub
 		Inscripcion nuevaInscripcion = new Inscripcion(curso.getIdCurso(), alumno.getDni());
 		return this.inscripciones.add(nuevaInscripcion);
 	}
