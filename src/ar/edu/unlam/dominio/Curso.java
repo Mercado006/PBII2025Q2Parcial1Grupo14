@@ -1,11 +1,8 @@
 package ar.edu.unlam.dominio;
 
-<<<<<<< HEAD
 import java.util.Objects;
-=======
 import java.util.HashSet;
 import java.util.Set;
->>>>>>> a72ad9480cb8dd2df78053002003ec3fa32826f5
 
 public class Curso {
 	
@@ -52,7 +49,6 @@ public class Curso {
 	public void setCapacidad(Integer capacidad) {
 		this.capacidad = capacidad;
 	}
-<<<<<<< HEAD
 
 	@Override
 	public int hashCode() {
@@ -70,11 +66,4 @@ public class Curso {
 		Curso other = (Curso) obj;
 		return Objects.equals(idCurso, other.idCurso);
 	}
-	
-	
-	
-	
-	
-=======
->>>>>>> a72ad9480cb8dd2df78053002003ec3fa32826f5
 }

@@ -63,28 +63,19 @@ public class Profesor {
 	}
 
 	public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPractico, Integer nota) {
-		for(EntregaTrabajoPractico tp : entregasDeTrabajosPracticos) {
-			if(tp.getId()==entregaTrabajoPractico.getId() && !tp.isCorregido()) {
-				tp.setCorregido(true);
-				tp.setNota(nota);
+		for(EntregaTrabajoPractico entregaTP : entregasDeTrabajosPracticos) {
+			if(entregaTP.equals(entregaTrabajoPractico) && !entregaTP.getFueCorregido()) {
+				entregaTP.setFueCorregido(true);
+				entregaTP.setNota(nota);
 			}	
 		}
 	}
 	
-	/*public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPractico, Integer nota) {
-		for(EntregaTrabajoPractico entregaTP : entregasDeTrabajosPracticos) {
-			if(entregaTP.equals(entregaTrabajoPractico) && !entregaTP.isCorregido()) {
-				entregaTP.setCorregido(true);
-				entregaTP.setNota(nota);
-			}	
-		}
-	}*/
-
 	public List<EntregaTrabajoPractico> obtenerEntregaDeTrabajosPracticosSinCorregir() {
 		List<EntregaTrabajoPractico> listaDeTrabajosPracticonSinCorregir = new ArrayList<EntregaTrabajoPractico>();
 		
 		for(EntregaTrabajoPractico entregaTrabajoPractico : entregasDeTrabajosPracticos) {
-			if(!entregaTrabajoPractico.isCorregido()) {
+			if(!entregaTrabajoPractico.getFueCorregido()) {
 				listaDeTrabajosPracticonSinCorregir.add(entregaTrabajoPractico);
 			}
 		}
