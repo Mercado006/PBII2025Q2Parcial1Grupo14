@@ -37,10 +37,10 @@ public class CursoTest {
 		
 		curso.anadirAlumno(alumno);
 		
-		Integer tamañoEsperado = 1;
-		Integer tamañoObtenido = curso.getAlumnos().size();
+		Integer tamaï¿½oEsperado = 1;
+		Integer tamaï¿½oObtenido = curso.getAlumnos().size();
 		
-		assertEquals(tamañoEsperado, tamañoObtenido);
+		assertEquals(tamaï¿½oEsperado, tamaï¿½oObtenido);
 		assertTrue(curso.getAlumnos().contains(alumno));
 	}
 	

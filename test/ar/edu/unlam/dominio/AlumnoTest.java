@@ -24,13 +24,16 @@ public class AlumnoTest {
 		Alumno alumnoDos = new Alumno(dni, nombre, apellido);
 		
 		Integer id = 1;
-		String nombreCurso = "Introducción a la programación";
+		String nombreCurso = "Introduccion a la programacion";
 		Integer capacidad = 100;
 		String lenguajePrincipal = "Java";
 		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
 		
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(cursoProgramacion);
+		sistema.anadirAlumno(alumnoDos);
+		sistema.anadirAlumno(alumnoUno);
+		sistema.anadirProfesor(profesor);
 		sistema.anadirProfesorACurso(profesor, cursoProgramacion);
 		sistema.anadirAlumnoACurso(alumnoDos, cursoProgramacion);
 		
@@ -52,13 +55,15 @@ public class AlumnoTest {
 		Alumno alumno = new Alumno(dni, nombre, apellido);
 		
 		Integer id = 1;
-		String nombreCurso = "Introducción a la programación";
+		String nombreCurso = "Introducciï¿½n a la programaciï¿½n";
 		Integer capacidad = 100;
 		String lenguajePrincipal = "Java";
 		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
 		
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(cursoProgramacion);
+		sistema.anadirAlumno(alumno);
+		sistema.anadirProfesor(profesor);
 		sistema.anadirProfesorACurso(profesor, cursoProgramacion);
 		sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 		
@@ -83,13 +88,15 @@ public class AlumnoTest {
 		Alumno alumno = new Alumno(dni, nombre, apellido);
 		
 		Integer id = 1;
-		String nombreCurso = "Introducción a la programación";
+		String nombreCurso = "Introducciï¿½n a la programaciï¿½n";
 		Integer capacidad = 100;
 		String lenguajePrincipal = "Java";
 		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
 		
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(cursoProgramacion);
+		sistema.anadirAlumno(alumno);
+		sistema.anadirProfesor(profesor);
 		sistema.anadirProfesorACurso(profesor, cursoProgramacion);
 		sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 		
@@ -117,13 +124,15 @@ public class AlumnoTest {
 		Alumno alumno = new Alumno(dni, nombre, apellido);
 		
 		Integer id = 1;
-		String nombreCurso = "Introducción a la programación";
+		String nombreCurso = "Introduccion a la programacion";
 		Integer capacidad = 100;
 		String lenguajePrincipal = "Java";
 		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
 		
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(cursoProgramacion);
+		sistema.anadirAlumno(alumno);
+		sistema.anadirProfesor(profesor);
 		sistema.anadirProfesorACurso(profesor, cursoProgramacion);
 		sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 		
@@ -150,13 +159,15 @@ public class AlumnoTest {
 		Alumno alumno = new Alumno(dni, nombre, apellido);
 		
 		Integer id = 1;
-		String nombreCurso = "Introducción a la programación";
+		String nombreCurso = "Introducciï¿½n a la programaciï¿½n";
 		Integer capacidad = 100;
 		String lenguajePrincipal = "Java";
 		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
 		
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(cursoProgramacion);
+		sistema.anadirAlumno(alumno);
+		sistema.anadirProfesor(profesor);
 		sistema.anadirProfesorACurso(profesor, cursoProgramacion);
 		sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 		
@@ -190,6 +201,8 @@ public class AlumnoTest {
 		
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(cursoProgramacion);
+		sistema.anadirAlumno(alumno);
+		sistema.anadirProfesor(profesor);
 		sistema.anadirProfesorACurso(profesor, cursoProgramacion);
 		sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 		

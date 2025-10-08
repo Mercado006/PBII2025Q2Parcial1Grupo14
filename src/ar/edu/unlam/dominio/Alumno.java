@@ -72,12 +72,12 @@ public class Alumno {
 	}
 
 	public boolean entregarTrabajoPractico(TrabajoPractico trabajoPractico, LocalDate fechaEntrega) {
-		if(trabajosPracticos.contains(trabajoPractico) && trabajoPractico.puedeSerEntregado(fechaEntrega)) {
+		if(this.trabajosPracticos.contains(trabajoPractico) && trabajoPractico.puedeSerEntregado(fechaEntrega)) {
 			EntregaTrabajoPractico entregaTrabajoPractico = new EntregaTrabajoPractico(this, fechaEntrega, trabajoPractico.getCursoAlQuePertenece());
 			trabajoPractico.getCursoAlQuePertenece().getProfesor().recibirEntregaTrabajoPractico(entregaTrabajoPractico);
 			trabajosPracticos.remove(trabajoPractico);
 			return true;
-		};
+		}
 		return false;
 	}
 }
