@@ -7,8 +7,6 @@ public enum Opciones {
 	AGREGAR_CURSO("Agregar un curso."),
 	ASIGNAR_TRABAJO_PRACTICO("Asignar trabajo practico."),
 	ENTREGAR_TRABAJO_PRACTICO("Entregar trabajo practico."),
-	CORREGIR_TRABAJO_PRACTICO("Corregir trabajo practico."),
-	MOSTRAR_ENTREGAS("Mostrar entregas."),
 	SALIR("Salir.");
 
 	private String descripcion;

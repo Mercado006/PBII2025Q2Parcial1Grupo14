@@ -6,7 +6,6 @@ import java.util.Scanner;
 import ar.edu.unlam.dominio.Alumno;
 import ar.edu.unlam.dominio.Curso;
 import ar.edu.unlam.dominio.CursoProgramacion;
-import ar.edu.unlam.dominio.EntregaTrabajoPractico;
 import ar.edu.unlam.dominio.Profesor;
 import ar.edu.unlam.dominio.Sistema;
 import ar.edu.unlam.dominio.TrabajoPractico;
@@ -109,11 +108,6 @@ public class Main {
 		} while (!opcionIngresada.equals(Opciones.SALIR));
 	}
 	
-	private static void asignarTrabajoPractico(Sistema sistema) {
-		
-	}
-	
-
 	private static void entregarTrabajoPractico(Sistema sistema) {
 		mensajeConsola("\nENTREGAR TRABAJO PRACTICO.");
 		mensajeConsola("Ingrese el DNI del alumno: ");
