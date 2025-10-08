@@ -14,7 +14,6 @@ public class AlumnoTest {
 	
 	@Test	
 	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoDevuelveFalseSiDichoTrabajoNoSeEncuentraEnSuListaDeTrabajosPracticos() {
-	// Testea el metodo de Alumno entregarTrabajoPractico para chequear que devuelva falso si no tiene dicho T.P. asignado.
 		String nombre = "nombre";
 		String apellido = "apellido";
 		Integer dni = 123;
@@ -46,7 +45,6 @@ public class AlumnoTest {
 	
 	@Test	
 	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoSiEsExitosoDichoTrabajoEsRemovidoDeSuListaDeTrabajosPracticos() {
-	// Testea el metodo de Alumno entregarTrabajoPractico para chequear que si todo sale bien se remueve dicho T.P. de su lista de trabajosPracticos.
 		String nombre = "nombre";
 		String apellido = "apellido";
 		Integer dni = 123;

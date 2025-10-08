@@ -7,6 +7,26 @@ import org.junit.Test;
 public class InscripcionTest {
 	
 	@Test
+	public void dadoQueExisteUnaInscripcionConUnaListaDeNotasElMetodoCalcularPromedioDevuelveCeroSiNoExistenNotas() {
+		Integer dni = 123;
+		String nombre = "nombre";
+		String apellido = "apellido";
+		Alumno alumno = new Alumno(dni, nombre, apellido);
+		
+		Integer id = 1;
+		String nombreCurso = "Introducción a la programación";
+		Integer capacidad = 100;
+		String lenguajePrincipal = "Java";
+		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+		
+	    Inscripcion inscripcion = new Inscripcion(cursoProgramacion, alumno);
+	    
+	    Double valorEsperado = 0.0;
+	    Double valorObtenido = inscripcion.calcularPromedio();
+	    assertEquals(valorEsperado, valorObtenido);
+	}
+	
+	@Test
 	public void dadoQueExisteUnaInscripcionConUnaListaDeNotasElMetodoCalcularPromedioDevuelveLaDivisionEntreLasNotasYElSizeDeDichaLista() {
 		Integer notaUno = 7;
 		Integer notaDos = 8;
