@@ -27,4 +27,8 @@ public class TrabajoPractico {
 	public void setCursoAlQuePertenece(Curso cursoAlQuePertenece) {
 		this.cursoAlQuePertenece = cursoAlQuePertenece;
 	}
+	
+	public Boolean puedeSerEntregado(LocalDate fechaEntrega) {
+	    return fechaEntrega.isBefore(fechaLimite) || fechaEntrega.isEqual(fechaLimite);
+	}
 }

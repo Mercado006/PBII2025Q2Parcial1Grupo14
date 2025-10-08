@@ -172,4 +172,33 @@ public class AlumnoTest {
 		
 		assertTrue(entregasTrabajosPracticos.get(0).getFechaLimite().equals(fechaQueSeEntrego));
 	}
+	
+	@Test	
+	public void dadoQueExisteUnAlumnoConElMetodoEntregarTrabajoPracticoDevuelveFalseSiSeIntentaEntregarDichoTrabajoFueraDeLaFechaEstipuladaEnTrabajoPractico() {
+		 Integer dni = 123;
+		 String nombre = "nombre";
+		 String apellido = "apellido";
+		 Alumno alumno = new Alumno(dni, nombre, apellido);
+		
+		 Profesor profesor = new Profesor(dni, nombre, apellido);
+		
+		Integer id = 1;
+		String nombreCurso = "Introduccion a la programaci�n";
+		Integer capacidad = 100;
+		String lenguajePrincipal = "Java";
+		Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
+		
+		Sistema sistema = new Sistema();
+		sistema.agregarCurso(cursoProgramacion);
+		sistema.anadirProfesorACurso(profesor, cursoProgramacion);
+		sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
+		
+		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
+		TrabajoPractico trabajoPractico = new TrabajoPractico(fechaEntrega, cursoProgramacion);
+		
+		profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
+		
+		LocalDate fechaQueSeEntrego = LocalDate.of(2025, 10, 21);
+		assertFalse(alumno.entregarTrabajoPractico(trabajoPractico, fechaQueSeEntrego));
+	}
 }

@@ -30,32 +30,37 @@ public class Sistema {
 	}
 	
 	public boolean anadirAlumnoACurso(Alumno alumno, Curso curso) {
-		Inscripcion inscripcion = new Inscripcion(curso, alumno);
-		for(Curso c : this.cursos) {
-			if(c.getIdCurso()==curso.getIdCurso()) {
-				if(c.getCapacidad()>c.getAlumnos().size()) {
-					c.anadirAlumno(alumno);
-					this.inscripciones.add(inscripcion);
-					return true;
-				}
-				return false;
-			}
-		}
-		return false;
+	    for (Curso cursoAEvaluar : this.cursos) {
+	        if (cursoAEvaluar.getIdCurso().equals(curso.getIdCurso()) && cursoAEvaluar.getCapacidad() > cursoAEvaluar.getAlumnos().size()) {
+	            if (cursoAEvaluar.getAlumnos().contains(alumno)) {
+	                return false;
+	            }
+	            cursoAEvaluar.anadirAlumno(alumno);
+	            Inscripcion inscripcion = new Inscripcion(cursoAEvaluar, alumno);
+	            this.inscripciones.add(inscripcion);
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 
 	public boolean anadirProfesorACurso(Profesor profesor, Curso curso) {
-		for(Profesor p : this.profesores) {
-			if(p.getDni()==profesor.getDni()) {
-				if(p.getCursosAsignados().contains(curso))
-					return false;
-				return p.anadirCurso(curso);
-			}
-				
-		}
-		return false;
+	    for (Profesor profesorAEvaluar : this.profesores) {
+	        if (profesorAEvaluar.getDni().equals(profesor.getDni())) {
+	            for (Curso cursoAEvaluar : this.cursos) {
+	                if (cursoAEvaluar.equals(curso)) {
+	                    if (profesorAEvaluar.getCursosAsignados().contains(cursoAEvaluar)) {
+	                        return false;
+	                    }
+	                    profesorAEvaluar.anadirCurso(cursoAEvaluar);
+	                    cursoAEvaluar.anadirProfesor(profesorAEvaluar);
+	                    return true;
+	                }
+	            }
+	        }
+	    }
+	    return false;
 	}
-
 
 	public Set<Curso> getCursos() {
 		return cursos;

@@ -27,7 +27,28 @@ public class SistemaTest {
 		assertTrue(sistema.anadirAlumnoACurso(alumno, curso));
 	}
 	
+	@Test
+	public void dadoQueExisteUnSistemaConElMetodoAnadirAlumnoACursoDichoMetodoAnadeAlAlumnoALaListaDeAlumnosDelCurso() {
+		Alumno alumno = new Alumno(24330190, "Pepito", "Suarez");
+		Curso curso = new CursoDisenio(1, "PB2", 20, "Photoshop");
+		Sistema sistema = new Sistema();
+		sistema.agregarCurso(curso);
+		sistema.anadirAlumnoACurso(alumno, curso);
+		
+		assertTrue(curso.getAlumnos().contains(alumno));
+	}
 	
+	@Test
+	public void dadoQueExisteUnSistemaConElMetodoAnadirProfesorACursoDichoMetodoActualizaElAtributoProfesorDelCurso() {
+		Profesor profesor = new Profesor(24330190, "Pepito", "Suarez");
+		Curso curso = new CursoDisenio(1, "PB2", 20, "Photoshop");
+		Sistema sistema = new Sistema();
+		sistema.agregarCurso(curso);
+		sistema.anadirProfesor(profesor);
+		sistema.anadirProfesorACurso(profesor, curso);
+
+		assertTrue(curso.getProfesor().equals(profesor));
+	}
 	
 	@Test
 	public void dadoQueExisteUnSistemaElMetodoAnadirProfesorACursoDevuelveTrue() {
@@ -66,6 +87,4 @@ public class SistemaTest {
 		
 		assertFalse(sistema.anadirProfesorACurso(profesor, curso));
 	}
-	
-	
 }

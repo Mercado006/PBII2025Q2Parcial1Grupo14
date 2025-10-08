@@ -10,16 +10,26 @@ public abstract class Curso {
 	private String nombre;
 	private Integer capacidad;
 	private Set<Alumno> alumnos;
+	private Profesor profesor;
 	
 	public Curso(Integer idCurso, String nombre, Integer capacidad) {
 		this.idCurso = idCurso;
 		this.nombre = nombre;
 		this.capacidad = capacidad;
 		this.alumnos = new HashSet<>();
+		this.profesor = null;
 	}
 
 	public Set<Alumno> getAlumnos() {
 		return alumnos;
+	}
+	
+	public Profesor getProfesor() {
+		return profesor;
+	}
+
+	public void anadirProfesor(Profesor profesor) {
+		this.profesor = profesor;
 	}
 
 	public Boolean anadirAlumno(Alumno alumno) {

@@ -58,14 +58,15 @@ public class Profesor {
 		}
 	}
 
-	public void recibirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPracticoUno) {
-		this.entregasDeTrabajosPracticos.add(entregaTrabajoPracticoUno);
+	public void recibirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPractico) {
+		this.entregasDeTrabajosPracticos.add(entregaTrabajoPractico);
 	}
 
 	public void corregirEntregaTrabajoPractico(EntregaTrabajoPractico entregaTrabajoPractico, Integer nota) {
 		for(EntregaTrabajoPractico entregaTP : entregasDeTrabajosPracticos) {
 			if(entregaTP.equals(entregaTrabajoPractico) && !entregaTP.getFueCorregido()) {
 				entregaTP.setFueCorregido(true);
+				entregaTP.getAlumno().obtenerInscripcionPorCurso(entregaTrabajoPractico.getCursoAlQuePertenece()).agregarNota(nota);
 				entregaTP.setNota(nota);
 			}	
 		}

@@ -50,7 +50,7 @@ public class ProfesorTest {
 		 Alumno alumno = new Alumno(24330190, "Pepito", "Suarez"); 
 		 
 		 Integer id = 1;
-		 String nombreCurso = "Introducci�n a la programaci�n";
+		 String nombreCurso = "Introduccion a la programacion";
 		 Integer capacidad = 100;
 		 String lenguajePrincipal = "Java";
 		 Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
@@ -84,7 +84,7 @@ public class ProfesorTest {
 		 Alumno alumno = new Alumno(24330190, "Pepito", "Suarez"); 
 	  
 		 Integer id = 1;
-		 String nombreCurso = "Introducci�n a la programaci�n";
+		 String nombreCurso = "Introduccion a la programacion";
 		 Integer capacidad = 100;
 		 String lenguajePrincipal = "Java";
 		 Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
@@ -104,7 +104,8 @@ public class ProfesorTest {
 		 
 		 EntregaTrabajoPractico entregaTrabajoPractico = profesor.getEntregasDeTrabajosPracticos().get(0);
 	  
-		 assertTrue(profesor.getEntregasDeTrabajosPracticos().contains(entregaTrabajoPractico)); }
+		 assertTrue(profesor.getEntregasDeTrabajosPracticos().contains(entregaTrabajoPractico)); 
+	}
 	 
 	
 	  @Test public void dadoQueExisteUnProfesorConElMetodoCorregirEntregaTrabajoPracticoSeActualizaLaNotaDeLaEntregaTrabajoPractico() { 
@@ -113,7 +114,7 @@ public class ProfesorTest {
 		  Alumno alumno = new Alumno(24330190, "Pepito", "Suarez"); 
 		  
 		  Integer id = 1;
-		  String nombreCurso = "Introducci�n a la programaci�n";
+			 String nombreCurso = "Introduccion a la programacion";
 		  Integer capacidad = 100;
 		  String lenguajePrincipal = "Java";
 		  Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
@@ -148,7 +149,7 @@ public class ProfesorTest {
 		 Alumno alumnoDos = new Alumno(21330190, "Juancito", "Suarez");
 		 
 		 Integer id = 1;
-		 String nombreCurso = "Introducci�n a la programacion";
+		 String nombreCurso = "Introduccion a la programacion";
 		 Integer capacidad = 100;
 		 String lenguajePrincipal = "Java";
 		 Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
@@ -177,12 +178,15 @@ public class ProfesorTest {
 		 Profesor profesor = new Profesor(dni, nombre, apellido);
 			
 		 Integer id = 1;
-		 String nombreCurso = "Introducci�n a la programaci�n";
+		 String nombreCurso = "Introduccion a la programacion";
 		 Integer capacidad = 100;
 		 String lenguajePrincipal = "Java";
 		 Curso cursoProgramacion = new CursoProgramacion(id, nombreCurso, capacidad, lenguajePrincipal);
 					
-		 Sistema sistema = new Sistema(); sistema.agregarCurso(cursoProgramacion);
+		 Sistema sistema = new Sistema(); 
+		 sistema.agregarCurso(cursoProgramacion);
+		 sistema.anadirProfesor(profesor);
+		 sistema.anadirAlumno(alumno);
 		 sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
 		 sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 		 

@@ -40,19 +40,19 @@ public class Inscripcion {
 		this.notas = notas;
 	}
 
-	public void agregarNota(Integer notaUno) {
-		this.notas.add(notaUno);
+	public void agregarNota(Integer nota) {
+		this.notas.add(nota);
 	}
 
 	public Double calcularPromedio() {
 
-		Double acumulador = 0.0;
+		Double suma = 0.0;
 		if (this.notas != null && this.notas.isEmpty() != true) {
 			for (Integer nota : this.notas) {
-				acumulador += nota;
+				suma += nota;
 			}
 
-			return acumulador / this.notas.size();
+			return suma / this.notas.size();
 		}
 
 		return 0.0;
