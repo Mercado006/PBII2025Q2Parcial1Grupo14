@@ -1,6 +1,8 @@
 package ar.edu.unlam.dominio;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Sistema {
@@ -17,19 +19,39 @@ public class Sistema {
 		this.inscripciones = new HashSet<Inscripcion>();
 	}
 
-	public boolean agregarCurso(Curso curso) {
+	public Boolean agregarCurso(Curso curso) {
 		return this.cursos.add(curso);
 	}
 
-	public boolean anadirProfesor(Profesor profesor) {
+	public Boolean anadirProfesor(Profesor profesor) {
 		return this.profesores.add(profesor);
 	}
 	
-	public boolean anadirAlumno(Alumno alumno) {
+	public Boolean anadirAlumno(Alumno alumno) {
 		return this.alumnos.add(alumno);
 	}
 	
-	public boolean anadirAlumnoACurso(Alumno alumno, Curso curso) {
+	public List<Alumno> obtenerAlumnosInscriptosAUnCurso(Curso curso) {
+	    List<Alumno> alumnosInscriptos = new ArrayList<>();
+	    for (Inscripcion inscripcion : this.inscripciones) {
+	        if (inscripcion.getCurso().equals(curso)) {
+	            alumnosInscriptos.add(inscripcion.getAlumno());
+	        }
+	    }
+	    return alumnosInscriptos;
+	}
+	
+	public List<Curso> obtenerCursosDeUnAlumno(Alumno alumno) {
+	    List<Curso> cursosDelAlumno = new ArrayList<>();
+	    for (Inscripcion inscripcion : this.inscripciones) {
+	        if (inscripcion.getAlumno().equals(alumno)) {
+	            cursosDelAlumno.add(inscripcion.getCurso());
+	        }
+	    }
+	    return cursosDelAlumno;
+	}
+	
+	public Boolean anadirAlumnoACurso(Alumno alumno, Curso curso) {
 	    for (Curso cursoAEvaluar : this.cursos) {
 	        if (cursoAEvaluar.getIdCurso().equals(curso.getIdCurso()) && cursoAEvaluar.getCapacidad() > cursoAEvaluar.getAlumnos().size()) {
 	            if (cursoAEvaluar.getAlumnos().contains(alumno)) {
@@ -45,7 +67,7 @@ public class Sistema {
 	    return false;
 	}
 
-	public boolean anadirProfesorACurso(Profesor profesor, Curso curso) {
+	public Boolean anadirProfesorACurso(Profesor profesor, Curso curso) {
 	    for (Profesor profesorAEvaluar : this.profesores) {
 	        if (profesorAEvaluar.getDni().equals(profesor.getDni())) {
 	            for (Curso cursoAEvaluar : this.cursos) {
@@ -101,4 +123,6 @@ public class Sistema {
 	public void setInscripciones(Set<Inscripcion> inscripciones) {
 		this.inscripciones = inscripciones;
 	}
+	
+	
 }

@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Test;
+
 
 public class SistemaTest {
 	
@@ -82,9 +85,62 @@ public class SistemaTest {
 		Profesor profesor = new Profesor(22330190, "Juancito", "Perez");
 		Sistema sistema = new Sistema();
 		sistema.anadirProfesor(profesor);
+		sistema.agregarCurso(curso);
 		
 		assertTrue(sistema.anadirProfesorACurso(profesor, curso));
 		
 		assertFalse(sistema.anadirProfesorACurso(profesor, curso));
 	}
+	
+	@Test
+    public void dadoQueExisteUnSistemaElMetodoObtenerCursosDeAlumnoDevuelveLosCursosCorrectos() {
+        Sistema sistema = new Sistema();
+
+        Alumno alumno = new Alumno(33333333, "Luis", "Martinez");
+
+        Curso cursoUno = new CursoProgramacion(1, "PB2", 20, "Java");
+        Curso cursoDos = new CursoDisenio(2, "Diseño Gráfico", 15, "Photoshop");
+
+        sistema.agregarCurso(cursoUno);
+        sistema.agregarCurso(cursoDos);
+
+        sistema.anadirAlumno(alumno);
+        sistema.anadirAlumnoACurso(alumno, cursoUno);
+        sistema.anadirAlumnoACurso(alumno, cursoDos);
+
+        List<Curso> cursosDelAlumno = sistema.obtenerCursosDeUnAlumno(alumno);
+        
+        Integer tamañoEsperado = 2;
+        Integer tamañoObtenido = cursosDelAlumno.size();
+        
+        assertEquals(tamañoEsperado, tamañoObtenido);
+        assertTrue(cursosDelAlumno.contains(cursoUno));
+        assertTrue(cursosDelAlumno.contains(cursoDos));
+    }
+	
+	@Test
+    public void dadoQueExisteUnSistemaElMetodoObtenerAlumnosInscriptosAUnCursoDevuelveLosAlumnosInscriptosADichoCurso() {
+        Sistema sistema = new Sistema();
+
+        Alumno alumnoUno = new Alumno(11111111, "Juan", "Perez");
+        Alumno alumnoDos = new Alumno(22222222, "Ana", "Lopez");
+
+        Curso curso = new CursoProgramacion(1, "PB2", 20, "Java");
+
+        sistema.agregarCurso(curso);
+        sistema.anadirAlumno(alumnoUno);
+        sistema.anadirAlumno(alumnoDos);
+
+        sistema.anadirAlumnoACurso(alumnoUno, curso);
+        sistema.anadirAlumnoACurso(alumnoDos, curso);
+
+        List<Alumno> alumnosInscriptos = sistema.obtenerAlumnosInscriptosAUnCurso(curso);
+        
+        Integer tamañoEsperado = 2;
+        Integer tamañoObtenido = alumnosInscriptos.size();
+        
+        assertEquals(tamañoEsperado, tamañoObtenido);
+        assertTrue(alumnosInscriptos.contains(alumnoUno));
+        assertTrue(alumnosInscriptos.contains(alumnoDos));
+    }
 }
