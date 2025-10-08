@@ -107,7 +107,7 @@ public class SistemaTest {
         Curso cursoUno = new CursoProgramacion(1, "PB2", 20, "Java");
         
         Double promedioFinalConElQueSeAprueba = 7.0;
-        Curso cursoDos = new CursoDisenio(2, "Diseño Gráfico", 15, "Photoshop", promedioFinalConElQueSeAprueba);
+        Curso cursoDos = new CursoDisenio(2, "Diseï¿½o Grï¿½fico", 15, "Photoshop", promedioFinalConElQueSeAprueba);
 
         sistema.agregarCurso(cursoUno);
         sistema.agregarCurso(cursoDos);
@@ -118,10 +118,10 @@ public class SistemaTest {
 
         List<Curso> cursosDelAlumno = sistema.obtenerCursosDeUnAlumno(alumno);
         
-        Integer tamañoEsperado = 2;
-        Integer tamañoObtenido = cursosDelAlumno.size();
+        Integer tamanoEsperado = 2;
+        Integer tamanoObtenido = cursosDelAlumno.size();
         
-        assertEquals(tamañoEsperado, tamañoObtenido);
+        assertEquals(tamanoEsperado, tamanoObtenido);
         assertTrue(cursosDelAlumno.contains(cursoUno));
         assertTrue(cursosDelAlumno.contains(cursoDos));
     }
@@ -144,10 +144,10 @@ public class SistemaTest {
 
         List<Alumno> alumnosInscriptos = sistema.obtenerAlumnosInscriptosAUnCurso(curso);
         
-        Integer tamañoEsperado = 2;
-        Integer tamañoObtenido = alumnosInscriptos.size();
+        Integer tamanoEsperado = 2;
+        Integer tamanoObtenido = alumnosInscriptos.size();
         
-        assertEquals(tamañoEsperado, tamañoObtenido);
+        assertEquals(tamanoEsperado, tamanoObtenido);
         assertTrue(alumnosInscriptos.contains(alumnoUno));
         assertTrue(alumnosInscriptos.contains(alumnoDos));
     }
