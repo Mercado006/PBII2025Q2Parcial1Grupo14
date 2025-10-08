@@ -81,6 +81,7 @@ public class SistemaTest {
 		Curso curso = new CursoProgramacion(1, "PB2", 20, "Java");
 		Profesor profesor = new Profesor(22330190, "Juancito", "Perez");
 		Sistema sistema = new Sistema();
+		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor);
 		
 		assertTrue(sistema.anadirProfesorACurso(profesor, curso));
