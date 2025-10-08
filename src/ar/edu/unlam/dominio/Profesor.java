@@ -16,8 +16,8 @@ public class Profesor {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.cursosAsignados = new ArrayList<Curso>();
-		this.entregasDeTrabajosPracticos = new ArrayList<EntregaTrabajoPractico>();
+		this.cursosAsignados = new ArrayList<>();
+		this.entregasDeTrabajosPracticos = new ArrayList<>();
 	}
 	
 	public List<Curso> getCursosAsignados(){
@@ -66,8 +66,12 @@ public class Profesor {
 		for(EntregaTrabajoPractico entregaTP : entregasDeTrabajosPracticos) {
 			if(entregaTP.equals(entregaTrabajoPractico) && !entregaTP.getFueCorregido()) {
 				entregaTP.setFueCorregido(true);
-				entregaTP.getAlumno().obtenerInscripcionPorCurso(entregaTrabajoPractico.getCursoAlQuePertenece()).agregarNota(nota);
 				entregaTP.setNota(nota);
+				
+				Inscripcion inscripcion = entregaTrabajoPractico.getAlumno().obtenerInscripcionPorCurso(entregaTrabajoPractico.getCursoAlQuePertenece());
+	            if (inscripcion != null) {
+	                inscripcion.agregarNota(nota);
+	            }
 			}	
 		}
 	}

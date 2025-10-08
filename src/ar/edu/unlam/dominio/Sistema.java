@@ -38,6 +38,7 @@ public class Sistema {
 	            cursoAEvaluar.anadirAlumno(alumno);
 	            Inscripcion inscripcion = new Inscripcion(cursoAEvaluar, alumno);
 	            this.inscripciones.add(inscripcion);
+	            alumno.anadirInscripcion(inscripcion);
 	            return true;
 	        }
 	    }

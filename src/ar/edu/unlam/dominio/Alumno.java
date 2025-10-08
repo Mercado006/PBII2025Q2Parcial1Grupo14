@@ -22,21 +22,25 @@ public class Alumno {
 		this.inscripciones = new HashSet<>();
 	}
 	
+	public Boolean anadirInscripcion(Inscripcion inscripcion) {
+		return inscripciones.add(inscripcion);
+	}
+	
+	public Inscripcion obtenerInscripcionPorCurso(Curso curso) {
+		for(Inscripcion inscripcion : inscripciones) {
+			if(inscripcion.getCurso().equals(curso)) {
+				return inscripcion;
+			}
+		}
+		return null;
+	}
+
 	public Set<Inscripcion> getInscripciones() {
 		return inscripciones;
 	}
 
 	public List<TrabajoPractico> getTrabajosPracticos() {
 		return trabajosPracticos;
-	}
-	
-	public Inscripcion obtenerInscripcionPorCurso(Curso curso) {
-	    for (Inscripcion inscripcion : inscripciones) {
-	        if (inscripcion.getCurso().equals(curso)) {
-	            return inscripcion;
-	        }
-	    }
-	    return null;
 	}
 
 	public void recibirTrabajoPractico(TrabajoPractico trabajoPractico) {

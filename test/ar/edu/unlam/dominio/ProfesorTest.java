@@ -20,6 +20,8 @@ public class ProfesorTest {
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor);
+		sistema.anadirAlumno(alumno);
+		sistema.anadirProfesorACurso(profesor, curso);
 		sistema.anadirAlumnoACurso(alumno, curso);
 
 		LocalDate fechaEntrega = LocalDate.of(2025, 10, 20);
@@ -57,6 +59,8 @@ public class ProfesorTest {
 	  
 		 Sistema sistema = new Sistema(); 
 		 sistema.agregarCurso(cursoProgramacion);
+		 sistema.anadirAlumno(alumno);
+		 sistema.anadirProfesor(profesor);
 		 sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
 		 sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 	  
@@ -65,7 +69,7 @@ public class ProfesorTest {
 		  
 		 profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
 	  
-		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 21);
+		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 15);
 		 alumno.entregarTrabajoPractico(trabajoPractico, fechaEntrega);
 			 
 		 Integer nota = 7;
@@ -91,6 +95,8 @@ public class ProfesorTest {
 	  
 		 Sistema sistema = new Sistema(); 
 		 sistema.agregarCurso(cursoProgramacion);
+		 sistema.anadirProfesor(profesor);
+		 sistema.anadirAlumno(alumno);
 		 sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
 		 sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 	  
@@ -99,7 +105,7 @@ public class ProfesorTest {
 		  
 		 profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
 	  
-		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 21);
+		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 15);
 		 alumno.entregarTrabajoPractico(trabajoPractico, fechaEntrega);
 		 
 		 EntregaTrabajoPractico entregaTrabajoPractico = profesor.getEntregasDeTrabajosPracticos().get(0);
@@ -121,6 +127,8 @@ public class ProfesorTest {
 	  
 		  Sistema sistema = new Sistema(); 
 		  sistema.agregarCurso(cursoProgramacion);
+		  sistema.anadirProfesor(profesor);
+		  sistema.anadirAlumno(alumno);
 		  sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
 		  sistema.anadirAlumnoACurso(alumno, cursoProgramacion);
 	  
@@ -129,7 +137,7 @@ public class ProfesorTest {
 		  
 		  profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
 	  
-		  LocalDate fechaEntrega = LocalDate.of(2025, 10, 21);
+		  LocalDate fechaEntrega = LocalDate.of(2025, 10, 15);
 		  alumno.entregarTrabajoPractico(trabajoPractico, fechaEntrega);
 			 
 		  Integer nota = 7;
@@ -156,6 +164,9 @@ public class ProfesorTest {
 	  
 		 Sistema sistema = new Sistema(); 
 		 sistema.agregarCurso(cursoProgramacion);
+		 sistema.anadirProfesor(profesor);
+		 sistema.anadirAlumno(alumnoUno);
+		 sistema.anadirAlumno(alumnoDos);
 		 sistema.anadirProfesorACurso(profesor, cursoProgramacion); 
 		 sistema.anadirAlumnoACurso(alumnoUno, cursoProgramacion);
 		 sistema.anadirAlumnoACurso(alumnoDos, cursoProgramacion);
@@ -196,7 +207,7 @@ public class ProfesorTest {
 		 
 		 profesor.asignarTrabajoPracticoACurso(trabajoPractico, cursoProgramacion);
 		 
-		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 21);
+		 LocalDate fechaEntrega = LocalDate.of(2025, 10, 15);
 		 alumno.entregarTrabajoPractico(trabajoPractico, fechaEntrega);
 		 
 		 Integer nota = 7;
