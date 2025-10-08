@@ -22,7 +22,8 @@ public class SistemaTest {
 	@Test
 	public void dadoQueExisteUnSistemaElMetodoAnadirAlumnoACursoDevuelveTrue() {
 		Alumno alumno = new Alumno(24330190, "Pepito", "Suarez");
-		Curso curso = new CursoDisenio(1, "PB2", 20, "Photoshop");
+		Double promedioFinalConElQueSeAprueba = 7.0;
+		Curso curso = new CursoDisenio(1, "PB2", 20, "Photoshop", promedioFinalConElQueSeAprueba);
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(curso);
 		sistema.anadirAlumno(alumno);
@@ -33,7 +34,9 @@ public class SistemaTest {
 	@Test
 	public void dadoQueExisteUnSistemaConElMetodoAnadirAlumnoACursoDichoMetodoAnadeAlAlumnoALaListaDeAlumnosDelCurso() {
 		Alumno alumno = new Alumno(24330190, "Pepito", "Suarez");
-		Curso curso = new CursoDisenio(1, "PB2", 20, "Photoshop");
+		
+		Double promedioFinalConElQueSeAprueba = 7.0;
+		Curso curso = new CursoDisenio(1, "PB2", 20, "Photoshop", promedioFinalConElQueSeAprueba);
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(curso);
 		sistema.anadirAlumnoACurso(alumno, curso);
@@ -44,7 +47,9 @@ public class SistemaTest {
 	@Test
 	public void dadoQueExisteUnSistemaConElMetodoAnadirProfesorACursoDichoMetodoActualizaElAtributoProfesorDelCurso() {
 		Profesor profesor = new Profesor(24330190, "Pepito", "Suarez");
-		Curso curso = new CursoDisenio(1, "PB2", 20, "Photoshop");
+		
+		Double promedioFinalConElQueSeAprueba = 7.0;
+		Curso curso = new CursoDisenio(1, "PB2", 20, "Photoshop", promedioFinalConElQueSeAprueba);
 		Sistema sistema = new Sistema();
 		sistema.agregarCurso(curso);
 		sistema.anadirProfesor(profesor);
@@ -99,7 +104,9 @@ public class SistemaTest {
         Alumno alumno = new Alumno(33333333, "Luis", "Martinez");
 
         Curso cursoUno = new CursoProgramacion(1, "PB2", 20, "Java");
-        Curso cursoDos = new CursoDisenio(2, "Diseño Gráfico", 15, "Photoshop");
+        
+        Double promedioFinalConElQueSeAprueba = 7.0;
+        Curso cursoDos = new CursoDisenio(2, "Diseño Gráfico", 15, "Photoshop", promedioFinalConElQueSeAprueba);
 
         sistema.agregarCurso(cursoUno);
         sistema.agregarCurso(cursoDos);

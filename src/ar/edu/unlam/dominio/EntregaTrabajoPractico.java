@@ -1,8 +1,6 @@
 package ar.edu.unlam.dominio;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 public class EntregaTrabajoPractico extends TrabajoPractico {
 	
