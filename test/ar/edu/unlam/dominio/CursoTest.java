@@ -4,9 +4,73 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
+
 import org.junit.Test;
 
 public class CursoTest {
+	
+	@Test
+    public void dadoQueExisteUnCursoQueImplementaLaInterfazEvaluableSiUnAlumnoEntrega2TPsConNotasCuyoPromedioNoEsSuficienteParaAprobarEntoncesElMetodoEstaAprobadoRetornaFalse() {
+        CursoDisenio curso = new CursoDisenio(1, "Diseño Gráfico", 10, "Photoshop", 7.0);
+
+        Alumno alumno = new Alumno(123, "Juan", "Perez");
+        Profesor profesor = new Profesor(456, "Ana", "Gomez");
+
+        Sistema sistema = new Sistema();
+        sistema.agregarCurso(curso);
+        sistema.anadirProfesor(profesor);
+        sistema.anadirAlumno(alumno);
+        sistema.anadirProfesorACurso(profesor, curso);
+        sistema.anadirAlumnoACurso(alumno, curso);
+
+        TrabajoPractico tp1 = new TrabajoPractico(LocalDate.of(2025, 10, 20), curso);
+        TrabajoPractico tp2 = new TrabajoPractico(LocalDate.of(2025, 10, 20), curso);
+
+        profesor.asignarTrabajoPracticoACurso(tp1, curso);
+        profesor.asignarTrabajoPracticoACurso(tp2, curso);
+
+        alumno.entregarTrabajoPractico(tp1, LocalDate.of(2025, 10, 18));
+        alumno.entregarTrabajoPractico(tp2, LocalDate.of(2025, 10, 19));
+
+        profesor.corregirEntregaTrabajoPractico(profesor.getEntregasDeTrabajosPracticos().get(0), 5);
+        profesor.corregirEntregaTrabajoPractico(profesor.getEntregasDeTrabajosPracticos().get(1), 6);
+
+        Double promedioFinal = alumno.obtenerInscripcionPorCurso(curso).calcularPromedio();
+
+        assertFalse(curso.estaAprobado(promedioFinal));
+    }
+	
+	@Test
+    public void dadoQueExisteUnCursoQueImplementaLaInterfazEvaluableSiUnAlumnoEntrega2TPsConNotasCuyoPromedioEsSuficienteParaAprobarEntoncesElMetodoEstaAprobadoRetornaTrue() {
+        CursoDisenio curso = new CursoDisenio(2, "Diseño Gráfico", 10, "Photoshop", 7.0);
+
+        Alumno alumno = new Alumno(321, "Laura", "Martinez");
+        Profesor profesor = new Profesor(654, "Carlos", "Lopez");
+
+        Sistema sistema = new Sistema();
+        sistema.agregarCurso(curso);
+        sistema.anadirProfesor(profesor);
+        sistema.anadirAlumno(alumno);
+        sistema.anadirProfesorACurso(profesor, curso);
+        sistema.anadirAlumnoACurso(alumno, curso);
+
+        TrabajoPractico tp1 = new TrabajoPractico(LocalDate.of(2025, 10, 20), curso);
+        TrabajoPractico tp2 = new TrabajoPractico(LocalDate.of(2025, 10, 20), curso);
+
+        profesor.asignarTrabajoPracticoACurso(tp1, curso);
+        profesor.asignarTrabajoPracticoACurso(tp2, curso);
+
+        alumno.entregarTrabajoPractico(tp1, LocalDate.of(2025, 10, 18));
+        alumno.entregarTrabajoPractico(tp2, LocalDate.of(2025, 10, 19));
+
+        profesor.corregirEntregaTrabajoPractico(profesor.getEntregasDeTrabajosPracticos().get(0), 8);
+        profesor.corregirEntregaTrabajoPractico(profesor.getEntregasDeTrabajosPracticos().get(1), 9);
+
+        Double promedioFinal = alumno.obtenerInscripcionPorCurso(curso).calcularPromedio();
+
+        assertTrue(curso.estaAprobado(promedioFinal));
+    }
 	
 	@Test
 	public void dadoQueExisteUnCursoElMetodoAnadirAlumnoDevuelveTrue() {
