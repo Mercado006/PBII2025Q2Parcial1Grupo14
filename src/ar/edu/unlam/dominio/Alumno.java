@@ -75,6 +75,7 @@ public class Alumno {
 		if(trabajosPracticos.contains(trabajoPractico) && trabajoPractico.puedeSerEntregado(fechaEntrega)) {
 			EntregaTrabajoPractico entregaTrabajoPractico = new EntregaTrabajoPractico(this, fechaEntrega, trabajoPractico.getCursoAlQuePertenece());
 			trabajoPractico.getCursoAlQuePertenece().getProfesor().recibirEntregaTrabajoPractico(entregaTrabajoPractico);
+			trabajosPracticos.remove(trabajoPractico);
 			return true;
 		};
 		return false;
