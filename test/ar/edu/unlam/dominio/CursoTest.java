@@ -12,7 +12,7 @@ public class CursoTest {
 	
 	@Test
     public void dadoQueExisteUnCursoQueImplementaLaInterfazEvaluableSiUnAlumnoEntrega2TPsConNotasCuyoPromedioNoEsSuficienteParaAprobarEntoncesElMetodoEstaAprobadoRetornaFalse() {
-        CursoDisenio curso = new CursoDisenio(1, "Diseño Gráfico", 10, "Photoshop", 7.0);
+        CursoDisenio curso = new CursoDisenio(1, "Diseï¿½o Grï¿½fico", 10, "Photoshop", 7.0);
 
         Alumno alumno = new Alumno(123, "Juan", "Perez");
         Profesor profesor = new Profesor(456, "Ana", "Gomez");
@@ -43,7 +43,7 @@ public class CursoTest {
 	
 	@Test
     public void dadoQueExisteUnCursoQueImplementaLaInterfazEvaluableSiUnAlumnoEntrega2TPsConNotasCuyoPromedioEsSuficienteParaAprobarEntoncesElMetodoEstaAprobadoRetornaTrue() {
-        CursoDisenio curso = new CursoDisenio(2, "Diseño Gráfico", 10, "Photoshop", 7.0);
+        CursoDisenio curso = new CursoDisenio(2, "Diseï¿½o Grï¿½fico", 10, "Photoshop", 7.0);
 
         Alumno alumno = new Alumno(321, "Laura", "Martinez");
         Profesor profesor = new Profesor(654, "Carlos", "Lopez");
@@ -101,10 +101,10 @@ public class CursoTest {
 		
 		curso.anadirAlumno(alumno);
 		
-		Integer tamañoEsperado = 1;
-		Integer tamañoObtenido = curso.getAlumnos().size();
+		Integer tamanioEsperado = 1;
+		Integer tamanioObtenido = curso.getAlumnos().size();
 		
-		assertEquals(tamañoEsperado, tamañoObtenido);
+		assertEquals(tamanioEsperado, tamanioObtenido);
 		assertTrue(curso.getAlumnos().contains(alumno));
 	}
 	
